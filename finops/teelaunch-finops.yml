@@ -1,0 +1,96 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Teelaunch
+providerId: teelaunch
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- Print on Demand
+- POD
+- Fulfillment
+- Orders
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Teelaunch spend. Teelaunch charges no monthly platform fee and no
+  separate API fee - cost is entirely transactional, incurred per produced order as
+  a per-item production (base) cost plus destination shipping, deducted from your
+  sale price. Spend therefore scales directly with fulfilled order volume and
+  product mix. The dominant cost drivers are per-SKU base cost, shipping
+  destination, and order/return volume; margin is the sale price minus base cost
+  minus shipping.
+notes: >-
+  Per-SKU base costs and shipping rates are set per product and per destination and
+  are not reconciled here. The API exposes real cost signals - GET /blanks and its
+  variants return product base cost, and GET /blanks/country/shipping/cost/{id}
+  returns per-country shipping cost - which can feed margin and landed-cost
+  calculations. Verify current rates against the live catalog.
+sources:
+- https://teelaunch.com
+- https://api.teelaunch.com/documentation
+- https://help.teelaunch.com/hc/en-us/articles/218276578-Product-Costs-and-Shipping-Prices
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Teelaunch
+serviceCategory: Ecommerce and Print-on-Demand Fulfillment
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Per Order
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Teelaunch Print on Demand
+  ServiceCategory: Ecommerce and Print-on-Demand Fulfillment
+  ProviderName: Teelaunch
+  PublisherName: Teelaunch
+  InvoiceIssuerName: Teelaunch
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Usage-Based
+meters:
+- name: production_cost
+  description: Per-item production (base) cost for each produced order line item.
+  unit: items
+  aggregation: sum
+  dimensions:
+  - account
+  - product
+  - blank
+- name: shipping_cost
+  description: Per-shipment shipping cost, varying by destination country and product.
+  unit: shipments
+  aggregation: sum
+  dimensions:
+  - account
+  - destination
+- name: order_volume
+  description: Count of produced orders driving transactional spend.
+  unit: orders
+  aggregation: sum
+  dimensions:
+  - account
+  - platform
+  - store
+principles:
+- name: Visibility
+  description: Track per-order production and shipping cost by product, platform, and store using the orders and blanks endpoints; reconcile against payment history (GET /account/payment-history).
+- name: Allocation
+  description: Map orders to platforms and stores so POD spend allocates to the sales channel and product line that generated it.
+- name: Optimization
+  description: Use per-blank base cost and per-country shipping-cost lookups to pick lower-cost SKUs and destinations, and set retail prices that preserve margin after base cost and shipping.
+- name: Accountability
+  description: Assign owners per store/platform and review fulfilled order volume and margin against pricing on a regular cadence.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

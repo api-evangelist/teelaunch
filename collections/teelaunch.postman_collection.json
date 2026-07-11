@@ -1,0 +1,1036 @@
+{
+  "info": {
+    "_postman_id": "e3fd410b-6e22-45ac-ad1d-077d9313b292",
+    "name": "Teelaunch API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Account",
+      "item": [
+        {
+          "name": "Get Info",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/account",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "account"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Settings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/account/settings",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "account",
+                "settings"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "123",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Store Settings",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"key\": \"order_hold\",\n    \"value\": \"1\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/account/settings",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "account",
+                "settings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Setting",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/account/settings/1",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "account",
+                "settings",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Store Billing Address",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"accountInfo\":{\n            \"company\":\"Teelaunch\",\n            \"address1\" :\"4286 Maple Court\",\n            \"address2\": \"Saint Louis\",\n            \"city\":\"Saint Louis\",\n            \"state\" :\"Louisiana\",\n            \"zip\" :\"63101\",\n            \"countryCode\":\"US\",\n            \"firstName\" : \"Albert\",\n            \"lastName\": \"Wagar\",\n            \"phoneNumber\" : \"573-412-0886\",\n            \"vat\" :\"12\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/account/address",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "account",
+                "address"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Payment History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/account/payment-history",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "account",
+                "payment-history"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "id",
+                  "value": "100000039103",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Payment History By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/account/payment-history/100000173673",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "account",
+                "payment-history",
+                "100000173673"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update settings",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"value\":\"1\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/account/settings/3",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "account",
+                "settings",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Blanks",
+      "item": [
+        {
+          "name": "Get Blanks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/blanks?ids=[1,2]",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "blanks"
+              ],
+              "query": [
+                {
+                  "key": "ids",
+                  "value": "[1,2]"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Blank By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/blanks/122",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "blanks",
+                "122"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Product By Blank Id",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Apparel\",\n    \"description\": \"Apparel Description\",\n    \"images\": [\n        {\n            \"position\": \"Front\",\n            \"url\": \"https://bit.ly/3KtwdtM\",\n            \"location\": \"Full Print\",\n            \"offset\":\"Normal\"\n        }\n        \n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/blanks/129/create",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "blanks",
+                "129",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Blank Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/categories",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Blank Category By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/categories/122",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "categories",
+                "122"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Blanks By Category Id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "5oXhs2OGYF9en3k9VKeW8TAXLK6SPfgwYBVspIldqy1fNkzJSRQiVfYuc6SB",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/categories/1/blanks",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "categories",
+                "1",
+                "blanks"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Get Orders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/orders?status=all&limit=5",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "orders"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "all"
+                },
+                {
+                  "key": "limit",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Order By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/orders/100000009019",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "orders",
+                "100000009019"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cancel Order",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/orders/100000005073/cancel",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "orders",
+                "100000005073",
+                "cancel"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Release Order",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/orders/100000005061/release",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "orders",
+                "100000005061",
+                "release"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Hold Order",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/orders/100000015235/hold",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "orders",
+                "100000015235",
+                "hold"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Clear Order Error",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/orders/100000000006/clear-error",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "orders",
+                "100000000006",
+                "clear-error"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Store Order",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"details\": {\n        \"email\": \"email@email.com\",\n        \"phone\": \"573-412-0886\",\n        \"firstName\": \"Albert\",\n        \"lastName\": \"Wagar\",\n        \"address1\" :\"4286 Maple Court\",\n        \"address2\": \"Saint Louis\",\n        \"city\":\"Saint Louis\",\n        \"state\" :\"Louisiana\",\n        \"zip\" :\"63101\",\n        \"countryCode\":\"US\",\n        \"country\": \"AF\",\n        \"platformStoreName\": \"\"\n    },\n    \"items\": [\n        {\n            \"variant_id\": \"100000038797\",\n            \"quantity\": \"1\"\n        }\n              \n    \n        \n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/orders/store",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "orders",
+                "store"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get traking information",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/orders/14/track",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "orders",
+                "14",
+                "track"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Platform Products",
+      "item": [
+        {
+          "name": "Get Platform Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/stores/100000000004/products?limit=5",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "stores",
+                "100000000004",
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Platform Product By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/stores/100000000004/products/19749",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "stores",
+                "100000000004",
+                "products",
+                "19749"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Platform Product",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/stores/100000000004/products/129408",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "stores",
+                "100000000004",
+                "products",
+                "129408"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Ignore Platform Product",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/stores/100000000004/products/138758/ignore",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "stores",
+                "100000000004",
+                "products",
+                "138758",
+                "ignore"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Unignore Platform Product",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/stores/100000000004/products/138758/unignore",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "stores",
+                "100000000004",
+                "products",
+                "138758",
+                "unignore"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Unlink Platform Product Variants",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/stores/100000000004/products/138758/variants/1854539/unlink",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "stores",
+                "100000000004",
+                "products",
+                "138758",
+                "variants",
+                "1854539",
+                "unlink"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Ignore Platform Product Variants",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/stores/100000000004/products/138758/variants/1854539/ignore",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "stores",
+                "100000000004",
+                "products",
+                "138758",
+                "variants",
+                "1854539",
+                "ignore"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UnIgnore Platform Product Variants",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/stores/100000000004/products/138758/variants/1854539/unignore",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "stores",
+                "100000000004",
+                "products",
+                "138758",
+                "variants",
+                "1854539",
+                "unignore"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Platforms",
+      "item": [
+        {
+          "name": "Get Platforms",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/platforms",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "platforms"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Platform",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/platforms/1",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "platforms",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/products?limit=5",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Product By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/products/100000006036",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "products",
+                "100000006036"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Product By Id",
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {}
+          },
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "  {\n        \"name\": \"Product Name\",\n        \"description\": \"Product Description\",\n        \"images\": [\n            {\n                \"url\": \"https://bit.ly/3KtwdtM\",\n                \"position\": \"Front Shirt\"\n            }\n        ]\n    }\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/products/100000001433",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "products",
+                "100000001433"
+              ],
+              "query": [
+                {
+                  "key": "artFiles",
+                  "value": "https://logos-world.net/wp-content/uploads/2020/12/Batman-Logo-2018-present.jpg",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Hold Product Orders",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n    {\n        \"name\": \"test41\",\n        \"description\": \"<p><strong>11oz Accent Mug</strong></p>\\n<p>Add a little pop of color to your morning routine with this stylish 11oz accent mug. Made with a premium hard coat that provides crisp and vibrant color reproduction, this mug is sure to look sharp in your hands for years.</p>\\n<ul>\\n<li>High Gloss + Premium White Finish</li>\\n<li>ORCA Coating</li>\\n<li>Dishwasher and Microwave Safe</li>\\n<li>3.7\\\"H x 3.7\\\"W x 3.2\\\"D</li>\\n<li>10.2\\\" Circumference</li>\\n</ul>\\n\",\n        \"tags\": [],\n        \"blankVariants\": [\n            {\n                \"blankId\": 27,\n                \"id\": 365,\n                \"weightUnitId\": 1,\n                \"price\": \"12\"\n            }\n        ],\n        \"orderHold\": false,\n        \"mockupIndex\": [],\n        \"stageFiles\": [\n            {\n                \"blankId\": 27,\n                \"blankStageId\": 191,\n                \"blankStageGroupId\": 27,\n                \"blankStageLocationId\": 16,\n                \"blankStageLocationSubId\": 24,\n                \"blankStageLocationSubOffsetId\": null,\n                \"imageId\": 100000000090,\n                \"createTypeId\": 1\n            }\n        ],\n        \"platformStores\": []\n    }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/products/100000001392/orders-hold",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "products",
+                "100000001392",
+                "orders-hold"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Release Product Orders",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n    {\n        \"name\": \"Product Name\",\n        \"description\": \"Product Description\",\n        \"tags\": [],\n        \"blankVariants\": [\n            {\n                \"blankId\": 27,\n                \"id\": 365,\n                \"weightUnitId\": 1,\n                \"price\": \"12\"\n            }\n        ],\n        \"orderHold\": false,\n        \"mockupIndex\": [],\n        \"stageFiles\": [\n            {\n                \"blankId\": 27,\n                \"blankStageId\": 191,\n                \"blankStageGroupId\": 27,\n                \"blankStageLocationId\": 16,\n                \"blankStageLocationSubId\": 24,\n                \"blankStageLocationSubOffsetId\": null,\n                \"imageId\": 100000000090,\n                \"createTypeId\": 1\n            }\n        ],\n        \"platformStores\": []\n    }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/products/100000001884/orders-release",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "products",
+                "100000001884",
+                "orders-release"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Stores",
+      "item": [
+        {
+          "name": "Get Stores",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/stores",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "stores"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Store",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{APP_URL}}/api/v1/stores/100000000016",
+              "host": [
+                "{{APP_URL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "stores",
+                "100000000016"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{TEELAUNCH_API_TOKEN}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "APP_URL",
+      "value": "https://api.teelaunch.com"
+    }
+  ]
+}

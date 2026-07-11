@@ -1,0 +1,105 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Teelaunch
+providerId: teelaunch
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- Print on Demand
+- POD
+- Fulfillment
+- Orders
+- Plans
+description: >-
+  Teelaunch has no monthly platform subscription and no separate API fee. The app
+  and the public REST API are free to install and use; you pay only when an order
+  is produced. Cost is the per-item production (base) cost plus shipping, deducted
+  from your sale price - your margin is the difference between what you charge the
+  customer and Teelaunch's base cost + shipping. Base costs vary widely by product:
+  apparel roughly 11-19 USD per item, non-apparel roughly 15-85 USD, phone cases
+  roughly 8-14 USD, with US domestic shipping commonly adding about 3-6 USD per
+  shipment. Exact per-product base costs and shipping rates are set per SKU and per
+  destination and are not reconciled here.
+notes: >-
+  Numbers above are indicative ranges gathered from public reviews and Teelaunch
+  documentation, not an authoritative rate card. The API surfaces real per-item and
+  per-country cost data - GET /blanks (and its variants) exposes product cost, and
+  GET /blanks/country/shipping/cost/{id} returns shipping cost for a blank variant.
+  Verify current costs against the live catalog during reconciliation.
+sources:
+- https://teelaunch.com
+- https://api.teelaunch.com/documentation
+- https://support.teelaunch.com/portal/en/kb/articles/default-pricing-and-description
+- https://help.teelaunch.com/hc/en-us/articles/218276578-Product-Costs-and-Shipping-Prices
+plans:
+- id: teelaunch-free-platform
+  name: Free Platform (Pay Per Order)
+  type: free
+  description: >-
+    No monthly subscription and no API access fee. Install the app or generate an
+    API token for free; you are billed only the production and shipping cost when a
+    customer order is produced. The full public REST API - catalog, products,
+    orders, shipping/tracking, platforms, and stores - is available at this tier.
+  entries:
+  - label: Monthly Platform Fee
+    name: monthly_platform_fee
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '0'
+    userMultiplied: false
+  - label: API Access Fee
+    name: api_access_fee
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '0'
+    userMultiplied: false
+  elements:
+  - name: Full REST API Access
+  - name: Blank Product Catalog
+  - name: Orders and Fulfillment
+  - name: Shipment Tracking
+  - name: Platform and Store Integrations
+- id: teelaunch-per-order-production
+  name: Per-Order Production and Shipping
+  type: usage
+  description: >-
+    Pay-as-you-go production cost. Each produced item is charged its per-SKU base
+    (production) cost plus destination shipping, deducted from your sale price. No
+    minimums, no monthly commitment.
+  entries:
+  - label: Per-Item Production Cost
+    name: production_cost
+    type: usage
+    metric: items
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: per-SKU base cost (varies by product; see live catalog)
+    userMultiplied: false
+  - label: Per-Shipment Shipping Cost
+    name: shipping_cost
+    type: usage
+    metric: shipments
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: per-destination shipping rate (varies by country/product)
+    userMultiplied: false
+  elements:
+  - name: On-Demand Production
+  - name: Global Dropship Shipping
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

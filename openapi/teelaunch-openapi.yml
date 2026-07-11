@@ -1,0 +1,1235 @@
+openapi: 3.0.0
+info:
+  title: teelaunch API
+  description: Teelaunch print-on-demand REST API. Manage account and settings, browse the blank product
+    catalog, create and manage products, submit and manage orders, and retrieve shipment tracking across
+    connected sales-channel platforms and stores. Authenticated with a Bearer (JWT) API token generated
+    from teelaunch Developer Settings.
+  version: 1.0.0
+servers:
+- url: https://api.teelaunch.com/api/v1
+  description: Production base URL
+paths:
+  /account:
+    get:
+      tags:
+      - Account
+      summary: Get detailed information about the authenticated user's account.
+      description: 'Get Account Information
+
+
+        Get detailed information about the authenticated user''s account.'
+      operationId: 2568f6551774f5a58a2e1b7e5aad8115
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /account/payment-history:
+    get:
+      tags:
+      - Account Payment
+      summary: Retrieve the payment history for the authenticated user's account.
+      description: 'Get Payment History
+
+
+        Retrieve the payment history for the authenticated user''s account.'
+      operationId: ad402e84d315e0489a7293ad6c657278
+      parameters:
+      - name: limit
+        in: query
+        description: Paging limit
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: 'Page number (default: 1)'
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /account/payment-history/{id}:
+    get:
+      tags:
+      - Account Payment
+      summary: Retrieve the payment history for a specific payment identified by its unique ID.
+      description: 'Get Payment History By Id.
+
+
+        Retrieve the payment history for a specific payment identified by its unique ID.'
+      operationId: d0f6b4a170c810850fa4232399e6dddb
+      parameters:
+      - name: id
+        in: path
+        description: The Id of the Payment History
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /account/settings:
+    get:
+      tags:
+      - Account Settings
+      summary: Get a list of all account settings or search based on a specific key.
+      description: 'Get Account Settings
+
+
+        Get a list of all account settings or search based on a specific key. You can perform partial
+        or fuzzy searching on setting keys by entering a partial key or keyword.'
+      operationId: 36147cdcf2d975057c6846c7a43a481b
+      parameters:
+      - name: search_key
+        in: query
+        description: 'Search settings by a specific key, allowing partial or fuzzy searching. Example:
+          order'
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: 'Page number (default: 1)'
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /account/settings/{id}:
+    get:
+      tags:
+      - Account Settings
+      summary: Get Account Setting By Id
+      description: 'Get Account Setting By Id.
+
+
+        Get a specific account setting by its Id.'
+      operationId: 849c2a043635e8e054c3cfb802078d84
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the Account Setting
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /account/settings/{accountId}:
+    put:
+      tags:
+      - Account Settings
+      summary: Update Account Setting
+      description: 'Update Account Setting
+
+
+        Update account setting by Account Id and Key'
+      operationId: b3d49efa73678cddfc3a06c3da79a875
+      parameters:
+      - name: accountId
+        in: path
+        description: ID of the Account
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: Request body for updating account setting
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                key:
+                  type: string
+                  example: setting_key
+                value:
+                  type: string
+                  example: new_setting_value
+              type: object
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '422':
+          description: Unprocessable Entity
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /categories:
+    get:
+      tags:
+      - Blank Category
+      summary: Get Blank Categories
+      description: 'Get Blank Categories
+
+
+        Get account blank categories'
+      operationId: 3cf29949d6a59edf1bfbdca9319518d9
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /categories/{id}:
+    get:
+      tags:
+      - Blank Category
+      summary: Get Blank Category By Id
+      description: 'Get Blank Category By Id
+
+
+        Retrieve information about a specific blank category identified by its unique ID.'
+      operationId: 7bd6346eeb8f9e067822a1bb5e554f97
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the blank category to retrieve.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /categories/{id}/blanks:
+    get:
+      tags:
+      - Blank Category
+      summary: Get blanks by category Id
+      description: Get Blanks By Category Id
+      operationId: a7238e30037699428ecc2f0a35538f48
+      parameters:
+      - name: id
+        in: path
+        description: Category id
+        required: true
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: 'Page number (default: 1)'
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /blanks:
+    get:
+      tags:
+      - Blank
+      summary: Get Blanks
+      description: 'Get Blanks
+
+
+        Get account blanks with vendor, category, image, variants and options'
+      operationId: f33ed3c07d628928c695d015706213e2
+      parameters:
+      - name: limit
+        in: query
+        description: Paging limit (max 5)
+        required: true
+        schema:
+          type: integer
+          maximum: 5
+      - name: page
+        in: query
+        description: 'Page number (default: 1)'
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /blanks/{id}:
+    get:
+      tags:
+      - Blank
+      summary: Get Blank By Id
+      description: 'Get Blank By Id
+
+
+        Retrieve detailed information about a specific blank identified by its unique ID,
+
+        including vendor, category, image, variants, and options.'
+      operationId: 4073123195b174f93c22a2e39ba43e84
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the blank to retrieve.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /blanks/country/shipping/cost/{id}:
+    get:
+      tags:
+      - Blank
+      summary: Get Country Shipping Cost By Blank Variant Id
+      description: Get Country Shipping Cost By Blank Variant Id
+      operationId: 9c109d7727861f3df589d68698789840
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the blank variant to retrieve.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /blanks/{id}/create:
+    post:
+      tags:
+      - Blank
+      summary: Create Product by Blank Id
+      description: 'Create Product by Blank Id
+
+
+        Create product by blank id with all variants. Note that only MONOGRAM blank category doesn''t
+        need images as bodyParam'
+      operationId: b8af01928da4a18ca202e09b28f49041
+      parameters:
+      - name: id
+        in: path
+        description: Blank id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Request body for creating a product
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                  example: Product Name
+                description:
+                  type: string
+                  example: Product Description
+                variants:
+                  type: array
+                  items:
+                    properties:
+                      id:
+                        type: integer
+                    type: integer
+                images:
+                  type: array
+                  items:
+                    properties:
+                      url:
+                        type: string
+                        example: https://example.com/image.jpg
+                      position:
+                        type: string
+                        example: front
+                      location:
+                        type: string
+                        example: center
+                      offset:
+                        type: string
+                        example: '0'
+                    type: object
+              type: object
+      responses:
+        '200':
+          description: Successful response
+        '422':
+          description: Unprocessable Entity
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /orders:
+    get:
+      tags:
+      - Orders
+      summary: Get Orders
+      description: 'Get Orders
+
+
+        Get Account Orders'
+      operationId: 2f71f731d00917eaf4cf488100ee4a68
+      parameters:
+      - name: status
+        in: query
+        description: The status id you are looking for, insert 'all' to retrieve all statuses
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Paging limit (max 5)
+        required: true
+        schema:
+          type: integer
+          maximum: 5
+      - name: page
+        in: query
+        description: 'Page number (default: 1)'
+        required: false
+        schema:
+          type: integer
+      - name: start_date
+        in: query
+        description: The start date must be UNIX timestamps (positive integers)
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        description: The end date must be UNIX timestamps (positive integers)
+        required: false
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+    post:
+      tags:
+      - Orders
+      summary: Store Order
+      description: 'Store Order
+
+
+        Store order'
+      operationId: 2bbb6d29d3345bb1d0d38877b33030f0
+      requestBody:
+        description: Request body for storing an order
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                details:
+                  properties:
+                    email:
+                      type: string
+                      example: user@example.com
+                    phone:
+                      type: string
+                      example: '1234567890'
+                    firstName:
+                      type: string
+                      example: John
+                    lastName:
+                      type: string
+                      example: Doe
+                    address1:
+                      type: string
+                      example: 123 Main St
+                    address2:
+                      type: string
+                      example: Apt 456
+                    city:
+                      type: string
+                      example: City
+                    state:
+                      type: string
+                      example: State
+                    zip:
+                      type: string
+                      example: '12345'
+                    country:
+                      type: string
+                      example: Country
+                    platformStoreName:
+                      type: string
+                      example: Store Name
+                  type: object
+                items:
+                  type: array
+                  items:
+                    properties:
+                      variant_id:
+                        type: string
+                        example: variant_id
+                      quantity:
+                        type: number
+                        example: 5
+                    type: object
+              type: object
+      responses:
+        '200':
+          description: Successful response
+        '422':
+          description: Unprocessable Entity
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /orders/{id}:
+    get:
+      tags:
+      - Orders
+      summary: Get Order By Id
+      description: 'Get Order By Id
+
+
+        Get account order by id'
+      operationId: 50d90d5c46e6459e22cbd89ca05e879f
+      parameters:
+      - name: id
+        in: path
+        description: Order id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /orders/{id}/cancel:
+    post:
+      tags:
+      - Orders
+      summary: Cancel Order
+      description: 'Cancel Order
+
+
+        Cancel account order. Note that only hold and pending orders can be canceled'
+      operationId: 59facf5d09499d6376eb0c9731cdb736
+      parameters:
+      - name: id
+        in: path
+        description: Order id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '422':
+          description: Unprocessable Entity
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /orders/{id}/release:
+    post:
+      tags:
+      - Orders
+      summary: Release Order
+      description: 'Release Order
+
+
+        Release account order. Note that only hold and out of stock orders can be released'
+      operationId: 3a94a0e0d5c256d26f33cd58de6fab66
+      parameters:
+      - name: id
+        in: path
+        description: Order id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '422':
+          description: Unprocessable Entity
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /orders/{id}/hold:
+    post:
+      tags:
+      - Orders
+      summary: Hold Order
+      description: 'Hold Order
+
+
+        Hold account order. Note that only pending orders can be set to Hold'
+      operationId: d29a3a373c10dfb35f2d71743c9b20cd
+      parameters:
+      - name: id
+        in: path
+        description: Order id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '422':
+          description: Unprocessable Entity
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /orders/pro:
+    post:
+      tags:
+      - Orders
+      summary: Create Order from variant
+      description: Create Order Pro
+      operationId: d8d545a21521bc4d460011d0f946ddbe
+      requestBody:
+        description: Request body for storing an order
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                label:
+                  type: integer
+                  example: 1000
+                name:
+                  type: string
+                  example: test api product
+                email:
+                  type: string
+                  example: tarik@teelaunch.com
+                firstName:
+                  type: string
+                  example: tarek
+                lastName:
+                  type: string
+                  example: ibrahim
+                phone:
+                  type: string
+                  example: '81646800'
+                address1:
+                  type: string
+                  example: 123 Main St
+                address2:
+                  type: string
+                  example: Apt 4B
+                city:
+                  type: string
+                  example: Cityville
+                state:
+                  type: string
+                  example: CA
+                zip:
+                  type: string
+                  example: '12345'
+                country:
+                  type: string
+                  example: US
+                variants:
+                  type: array
+                  items:
+                    properties:
+                      id:
+                        type: integer
+                        example: 1181
+                      images:
+                        type: array
+                        items:
+                          properties:
+                            url:
+                              type: string
+                              example: https://teelaunch-2.s3.us-west-2.amazonaws.com/accounts/3/products/100000544685/art-files/649065/Hoodie_CarolinaBlue_XL_LeftChest_Chloe.png
+                            stage:
+                              type: string
+                              example: Front Shirt
+                          type: object
+                      quantity:
+                        type: integer
+                        example: 1
+                      TextPersonalizer:
+                        type: string
+                        example: ''
+                      shippingLabel:
+                        type: string
+                        example: ''
+                    type: object
+              type: object
+      responses:
+        '200':
+          description: Successful response
+        '422':
+          description: Unprocessable Entity
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /orders/{id}/shipments:
+    get:
+      tags:
+      - Orders
+      summary: Get Shipment by Order ID
+      description: Get Order Shipments
+      operationId: 240dd75ed623c423755bef1843635581
+      parameters:
+      - name: id
+        in: path
+        description: Order id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /orders/line-item/{id}/shipments:
+    get:
+      tags:
+      - Orders
+      summary: Get Shipment by Order Line Item ID
+      description: Get Order Line Item Shipments
+      operationId: b7e91b64cf7a7b7cf6d4018b3bdcdb69
+      parameters:
+      - name: id
+        in: path
+        description: Order Line Item id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /orders/platform/{id}/shipments:
+    get:
+      tags:
+      - Orders
+      summary: Get Shipment by Platform Order Id
+      description: Get Shipments by platform order id
+      operationId: d5e42a4442f4058bb2830cc58e623f97
+      parameters:
+      - name: id
+        in: path
+        description: Platform Order Id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /platforms:
+    get:
+      tags:
+      - Platforms
+      summary: Get Platforms
+      description: 'Get Platforms
+
+
+        Get account Platform with stores connected to each'
+      operationId: ea7be5e215e4581e1c38dc5a9c7414ef
+      parameters:
+      - name: limit
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: 'Page number (default: 1)'
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /platforms/{id}:
+    get:
+      tags:
+      - Platforms
+      summary: Get Platform
+      description: 'Get Platform
+
+
+        Get account Platform by id'
+      operationId: cc3d714e5f357e1dbe48c1dfd6c64ff1
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the platform.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /stores:
+    get:
+      tags:
+      - Platform Stores
+      summary: Get Stores
+      description: 'Get Stores
+
+
+        Get stores'
+      operationId: 029dfe0bb9acd7df4230201a637a1ac1
+      parameters:
+      - name: limit
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: 'Page number (default: 1)'
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /stores/{id}:
+    get:
+      tags:
+      - Platform Stores
+      summary: Get Store
+      description: 'Get Store
+
+
+        Get store by Id'
+      operationId: 5ebb71f384e9969ae7bfca07c4cf7450
+      parameters:
+      - name: id
+        in: path
+        description: Platform Store Id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /stores/products/variants/{id}/unlink:
+    post:
+      tags:
+      - Platform Store Product Variants
+      summary: Unlink Platform Product Variants
+      description: Unlink Platform Product Variants
+      operationId: dbbcc24e2bc2247f2f013ea856fdb091
+      parameters:
+      - name: id
+        in: path
+        description: platform store product platform store product Platform store product variant id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Variant unlinked!
+                type: object
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /stores/products/variants/{id}/ignore:
+    post:
+      tags:
+      - Platform Store Product Variants
+      summary: Ignore Platform Product Variants
+      description: Ignore platform product variants
+      operationId: 4c4c73196aad959c84a922c39cf1be8e
+      parameters:
+      - name: id
+        in: path
+        description: Platform store product variant id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Variant ignored!
+                type: object
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /stores/products/variants/{id}/unignore:
+    post:
+      tags:
+      - Platform Store Product Variants
+      summary: Ignore Platform Product Variants
+      description: Unignore Platform Product Variants
+      operationId: 988135adcca30eef5d9d08bc0930b695
+      parameters:
+      - name: id
+        in: path
+        description: Platform store product variant id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Variant Unignored!
+                type: object
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /stores/{platformStoreId}/products/{id}:
+    get:
+      tags:
+      - Platform Store Products
+      summary: Get Platform Product By Id
+      description: 'Get Platform Product By Id
+
+
+        Get platform product by id'
+      operationId: 3fa7a6faf46bb48fd6a78c2a133d7cf8
+      parameters:
+      - name: platformStoreId
+        in: path
+        description: Platform Store Id
+        required: true
+        schema:
+          type: integer
+      - name: id
+        in: path
+        description: Platform Store Product Id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /stores/{platformStoreId}/products:
+    get:
+      tags:
+      - Platform Store Products
+      summary: Get Platform Products
+      description: 'Get Platform Products
+
+
+        Get platform products'
+      operationId: aeb6e9973ad802d72917350ef1b41e2d
+      parameters:
+      - name: platformStoreId
+        in: path
+        description: platformStoreId
+        required: true
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        description: max 5
+        required: true
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: default value is 1
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /stores/{platformStoreId}/products/{id}/ignore:
+    post:
+      tags:
+      - Platform Store Products
+      summary: Ignore Platform Product
+      description: 'Ignore Platform Product
+
+
+        Ignore platform product'
+      operationId: 2636ded800a48cf2f66eefa4db1cf915
+      parameters:
+      - name: platformStoreId
+        in: path
+        description: platformStoreId
+        required: true
+        schema:
+          type: integer
+      - name: id
+        in: path
+        description: productId
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /stores/{platformStoreId}/products/{id}/unignore:
+    post:
+      tags:
+      - Platform Store Products
+      summary: Unignore Platform Product
+      description: 'Unignore Platform Product
+
+
+        Unignore platform product'
+      operationId: 9f1bf75602027f29bba07b1ffb89d345
+      parameters:
+      - name: platformStoreId
+        in: path
+        description: platformStoreId
+        required: true
+        schema:
+          type: integer
+      - name: id
+        in: path
+        description: Platform store product id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /products:
+    get:
+      tags:
+      - Products
+      summary: Get Products
+      description: Get account products with variants
+      operationId: cbd3820f1c54e85489d86c79c20ec741
+      parameters:
+      - name: limit
+        in: query
+        description: Maximum number of products to retrieve (required, max 5)
+        required: true
+        schema:
+          type: integer
+          maximum: 5
+      - name: page
+        in: query
+        description: Page number (default value is 1)
+        schema:
+          type: integer
+          default: 1
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: responses/Products/index.json
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /products/{id}:
+    get:
+      tags:
+      - Products
+      summary: Get Product By Id
+      description: 'Get Product By Id
+
+
+        Get Account Product By Id'
+      operationId: 163fa1b107c906fbd20e5a804078dfa4
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      name: bearerAuth
+      in: header
+      bearerFormat: JWT
+      scheme: bearer
+tags:
+- name: Account
+  description: Account
+- name: Account Payment
+  description: Account Payment
+- name: Account Settings
+  description: Account Settings
+- name: Blank Category
+  description: Blank Category
+- name: Blank
+  description: Blank
+- name: Orders
+  description: Orders
+- name: Platforms
+  description: Platforms
+- name: Platform Stores
+  description: Platform Stores
+- name: Platform Store Product Variants
+  description: Platform Store Product Variants
+- name: Platform Store Products
+  description: Platform Store Products
+- name: Products
+  description: Products

@@ -1,0 +1,57 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Teelaunch
+providerId: teelaunch
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- Print on Demand
+- POD
+- Orders
+- Rate Limiting
+- Quotas
+description: >-
+  Teelaunch does not publish fixed numeric rate limits for its public REST API in
+  the OpenAPI document or the API-token knowledge base. Access is gated first by
+  account verification - a new account's API token does not function until the
+  account is verified, which typically completes within 24 hours (up to 72). Beyond
+  that, standard REST throttling conventions should be assumed. Clients should honor
+  429 responses with exponential backoff and treat the outbound shipment-tracking
+  webhook (configured in Developer Settings) as the push channel rather than
+  polling order/shipment endpoints aggressively.
+notes: >-
+  No per-account or per-endpoint numeric request limits are documented as of the
+  review date. Verify any limits with Teelaunch support if you are building a
+  high-volume integration, and prefer the shipment-tracking webhook over tight
+  polling loops.
+sources:
+- https://api.teelaunch.com/documentation
+- https://support.teelaunch.com/portal/en/kb/articles/api-token
+responseCodes:
+  throttled: 429
+limits:
+- name: REST API Requests
+  scope: account
+  metric: requests
+  limit: not published
+  notes: No fixed numeric request-rate limit is documented for the public REST API.
+- name: Account Verification Gate
+  scope: account
+  metric: verification
+  limit: required before API token functions
+  notes: New accounts must be verified (typically 24h, up to 72h) before the API token works.
+- name: Order Submission
+  scope: account
+  metric: orders
+  limit: not published
+  notes: No documented cap on order creation volume; governed by account standing and production capacity.
+policies:
+- name: Backoff Strategy
+  description: On 429 responses, implement exponential backoff with jitter and honor any Retry-After header.
+- name: Webhook Over Polling
+  description: Use the shipment-tracking webhook configured in Developer Settings to receive fulfillment updates instead of polling the shipments endpoints.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

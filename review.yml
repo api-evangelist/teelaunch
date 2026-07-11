@@ -1,0 +1,112 @@
+aid: teelaunch
+name: Teelaunch
+review:
+  question: Does Teelaunch expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-11'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Teelaunch's published public surface is a
+    request/response REST API (OpenAPI 3.0) over HTTPS. The only server-initiated
+    push in Teelaunch's integration model is an outbound webhook that posts
+    shipment tracking to a merchant-configured URL - server-to-endpoint HTTP, not
+    a WebSocket or SSE transport on Teelaunch's own API. There is no bidirectional
+    or streaming socket to model, so no AsyncAPI was created.
+findings:
+  summary: |
+    Teelaunch does not publish a documented public WebSocket API. Teelaunch is a
+    print-on-demand (POD) platform, primarily consumed as a storefront app on
+    Shopify, Etsy, and BigCommerce, but it also publishes a documented standalone
+    public REST API at base https://api.teelaunch.com/api/v1, described by an
+    OpenAPI 3.0 document (https://api.teelaunch.com/api-docs.json) and a Postman
+    collection (https://api.teelaunch.com/apiCollection.json). The API is
+    authenticated with a Bearer (JWT) token generated from the account's Developer
+    Settings; accounts must be verified (typically within 24-72 hours) before the
+    token functions. All 35 documented operations are request/response REST over
+    HTTPS. Teelaunch communicates shipment tracking back to external systems via an
+    outbound webhook URL configured in Developer Settings, not via a socket. No
+    realtime, bidirectional, or streaming WebSocket (ws:// or wss://) endpoint is
+    documented anywhere in Teelaunch's API reference as of the review date.
+  accessModel: |
+    Public and self-service but gated behind account verification. Any Teelaunch
+    account holder can generate an API token; there is no separate API subscription
+    fee. Teelaunch is app-first (Shopify/Etsy/BigCommerce) but the REST API is a
+    genuine standalone product surface, positioned for developers and high-volume
+    merchants who need automation beyond the storefront apps.
+  endpointsModeled: false
+  endpointsSource: |
+    All endpoints below are transcribed from Teelaunch's own published OpenAPI 3.0
+    document and Postman collection - they are confirmed, not modeled.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.teelaunch.com/api/v1
+      documented: true
+      note: Full public REST API, OpenAPI 3.0, Bearer/JWT auth. 35 documented operations.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: Outbound shipment-tracking webhook posted to a URL configured in Developer Settings. Server-to-endpoint HTTP, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in Teelaunch's API reference as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://api.teelaunch.com/api/v1/account
+    - GET    https://api.teelaunch.com/api/v1/account/payment-history
+    - GET    https://api.teelaunch.com/api/v1/account/payment-history/{id}
+    - GET    https://api.teelaunch.com/api/v1/account/settings
+    - GET    https://api.teelaunch.com/api/v1/account/settings/{id}
+    - PUT    https://api.teelaunch.com/api/v1/account/settings/{accountId}
+    - GET    https://api.teelaunch.com/api/v1/categories
+    - GET    https://api.teelaunch.com/api/v1/categories/{id}
+    - GET    https://api.teelaunch.com/api/v1/categories/{id}/blanks
+    - GET    https://api.teelaunch.com/api/v1/blanks
+    - GET    https://api.teelaunch.com/api/v1/blanks/{id}
+    - GET    https://api.teelaunch.com/api/v1/blanks/country/shipping/cost/{id}
+    - POST   https://api.teelaunch.com/api/v1/blanks/{id}/create
+    - GET    https://api.teelaunch.com/api/v1/products
+    - GET    https://api.teelaunch.com/api/v1/products/{id}
+    - GET    https://api.teelaunch.com/api/v1/orders
+    - POST   https://api.teelaunch.com/api/v1/orders
+    - POST   https://api.teelaunch.com/api/v1/orders/pro
+    - GET    https://api.teelaunch.com/api/v1/orders/{id}
+    - POST   https://api.teelaunch.com/api/v1/orders/{id}/cancel
+    - POST   https://api.teelaunch.com/api/v1/orders/{id}/release
+    - POST   https://api.teelaunch.com/api/v1/orders/{id}/hold
+    - GET    https://api.teelaunch.com/api/v1/orders/{id}/shipments
+    - GET    https://api.teelaunch.com/api/v1/orders/line-item/{id}/shipments
+    - GET    https://api.teelaunch.com/api/v1/orders/platform/{id}/shipments
+    - GET    https://api.teelaunch.com/api/v1/platforms
+    - GET    https://api.teelaunch.com/api/v1/platforms/{id}
+    - GET    https://api.teelaunch.com/api/v1/stores
+    - GET    https://api.teelaunch.com/api/v1/stores/{id}
+    - GET    https://api.teelaunch.com/api/v1/stores/{platformStoreId}/products
+    - GET    https://api.teelaunch.com/api/v1/stores/{platformStoreId}/products/{id}
+    - POST   https://api.teelaunch.com/api/v1/stores/{platformStoreId}/products/{id}/ignore
+    - POST   https://api.teelaunch.com/api/v1/stores/{platformStoreId}/products/{id}/unignore
+    - POST   https://api.teelaunch.com/api/v1/stores/products/variants/{id}/unlink
+    - POST   https://api.teelaunch.com/api/v1/stores/products/variants/{id}/ignore
+    - POST   https://api.teelaunch.com/api/v1/stores/products/variants/{id}/unignore
+sources:
+  - url: https://api.teelaunch.com/documentation
+    type: Documentation
+    note: L5 Swagger UI, OpenAPI 3.0. Base URL /api/v1, Bearer/JWT auth. No WebSocket mentioned.
+  - url: https://api.teelaunch.com/api-docs.json
+    type: OpenAPI
+    note: Machine-readable OpenAPI 3.0 document, 35 operations across Account, Blank Catalog, Products, Orders, Platforms, and Stores.
+  - url: https://api.teelaunch.com/apiCollection.json
+    type: PostmanCollection
+    note: Official Postman collection mirroring the REST API.
+  - url: https://support.teelaunch.com/portal/en/kb/articles/api-token
+    type: Authentication
+    note: How to generate an API token from Developer Settings; account verification required (24-72h).
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. Teelaunch's public API is
+    request/response REST (OpenAPI 3.0). The only push mechanism is an outbound
+    shipment-tracking webhook (server-to-endpoint HTTP), which is not a WebSocket,
+    so no AsyncAPI document was created.
