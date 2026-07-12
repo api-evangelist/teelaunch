@@ -145,6 +145,10 @@ apis:
     products, and link, unlink, ignore, or unignore platform products and their
     variants. Covers the /platforms and /stores endpoints.
 common:
+- type: DomainSecurity
+  url: security/teelaunch-domain-security.yml
+- type: Authentication
+  url: authentication/teelaunch-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/teelaunch
 - type: Website
