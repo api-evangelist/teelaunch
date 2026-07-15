@@ -1,0 +1,459 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/teelaunch-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 36
+  by_action_class:
+    connected: 24
+    acting: 12
+  by_consequence:
+    read: 24
+    write: 7
+    physical: 5
+  human_in_the_loop_required: 0
+operations:
+- path: /account
+  method: get
+  operationId: 2568f6551774f5a58a2e1b7e5aad8115
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /account/payment-history
+  method: get
+  operationId: ad402e84d315e0489a7293ad6c657278
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /account/payment-history/{id}
+  method: get
+  operationId: d0f6b4a170c810850fa4232399e6dddb
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /account/settings
+  method: get
+  operationId: 36147cdcf2d975057c6846c7a43a481b
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /account/settings/{id}
+  method: get
+  operationId: 849c2a043635e8e054c3cfb802078d84
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /account/settings/{accountId}
+  method: put
+  operationId: b3d49efa73678cddfc3a06c3da79a875
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /categories
+  method: get
+  operationId: 3cf29949d6a59edf1bfbdca9319518d9
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /categories/{id}
+  method: get
+  operationId: 7bd6346eeb8f9e067822a1bb5e554f97
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /categories/{id}/blanks
+  method: get
+  operationId: a7238e30037699428ecc2f0a35538f48
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /blanks
+  method: get
+  operationId: f33ed3c07d628928c695d015706213e2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /blanks/{id}
+  method: get
+  operationId: 4073123195b174f93c22a2e39ba43e84
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /blanks/country/shipping/cost/{id}
+  method: get
+  operationId: 9c109d7727861f3df589d68698789840
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /blanks/{id}/create
+  method: post
+  operationId: b8af01928da4a18ca202e09b28f49041
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /orders
+  method: get
+  operationId: 2f71f731d00917eaf4cf488100ee4a68
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /orders
+  method: post
+  operationId: 2bbb6d29d3345bb1d0d38877b33030f0
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /orders/{id}
+  method: get
+  operationId: 50d90d5c46e6459e22cbd89ca05e879f
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /orders/{id}/cancel
+  method: post
+  operationId: 59facf5d09499d6376eb0c9731cdb736
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /orders/{id}/release
+  method: post
+  operationId: 3a94a0e0d5c256d26f33cd58de6fab66
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /orders/{id}/hold
+  method: post
+  operationId: d29a3a373c10dfb35f2d71743c9b20cd
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /orders/pro
+  method: post
+  operationId: d8d545a21521bc4d460011d0f946ddbe
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /orders/{id}/shipments
+  method: get
+  operationId: 240dd75ed623c423755bef1843635581
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /orders/line-item/{id}/shipments
+  method: get
+  operationId: b7e91b64cf7a7b7cf6d4018b3bdcdb69
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /orders/platform/{id}/shipments
+  method: get
+  operationId: d5e42a4442f4058bb2830cc58e623f97
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /platforms
+  method: get
+  operationId: ea7be5e215e4581e1c38dc5a9c7414ef
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /platforms/{id}
+  method: get
+  operationId: cc3d714e5f357e1dbe48c1dfd6c64ff1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /stores
+  method: get
+  operationId: 029dfe0bb9acd7df4230201a637a1ac1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /stores/{id}
+  method: get
+  operationId: 5ebb71f384e9969ae7bfca07c4cf7450
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /stores/products/variants/{id}/unlink
+  method: post
+  operationId: dbbcc24e2bc2247f2f013ea856fdb091
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /stores/products/variants/{id}/ignore
+  method: post
+  operationId: 4c4c73196aad959c84a922c39cf1be8e
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /stores/products/variants/{id}/unignore
+  method: post
+  operationId: 988135adcca30eef5d9d08bc0930b695
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /stores/{platformStoreId}/products/{id}
+  method: get
+  operationId: 3fa7a6faf46bb48fd6a78c2a133d7cf8
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /stores/{platformStoreId}/products
+  method: get
+  operationId: aeb6e9973ad802d72917350ef1b41e2d
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /stores/{platformStoreId}/products/{id}/ignore
+  method: post
+  operationId: 2636ded800a48cf2f66eefa4db1cf915
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /stores/{platformStoreId}/products/{id}/unignore
+  method: post
+  operationId: 9f1bf75602027f29bba07b1ffb89d345
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /products
+  method: get
+  operationId: cbd3820f1c54e85489d86c79c20ec741
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /products/{id}
+  method: get
+  operationId: 163fa1b107c906fbd20e5a804078dfa4
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

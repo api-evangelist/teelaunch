@@ -145,6 +145,8 @@ apis:
     products, and link, unlink, ignore, or unignore platform products and their
     variants. Covers the /platforms and /stores endpoints.
 common:
+- type: AgenticAccess
+  url: agentic-access/teelaunch-agentic-access.yml
 - type: DomainSecurity
   url: security/teelaunch-domain-security.yml
 - type: Authentication
