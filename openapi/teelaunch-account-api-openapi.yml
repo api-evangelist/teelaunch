@@ -1,0 +1,37 @@
+openapi: 3.0.0
+info:
+  title: teelaunch Account API
+  description: Teelaunch print-on-demand REST API. Manage account and settings, browse the blank product catalog, create and manage products, submit and manage orders, and retrieve shipment tracking across connected sales-channel platforms and stores. Authenticated with a Bearer (JWT) API token generated from teelaunch Developer Settings.
+  version: 1.0.0
+servers:
+- url: https://api.teelaunch.com/api/v1
+  description: Production base URL
+tags:
+- name: Account
+  description: Account
+paths:
+  /account:
+    get:
+      tags:
+      - Account
+      summary: Get detailed information about the authenticated user's account.
+      description: 'Get Account Information
+
+
+        Get detailed information about the authenticated user''s account.'
+      operationId: 2568f6551774f5a58a2e1b7e5aad8115
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      name: bearerAuth
+      in: header
+      bearerFormat: JWT
+      scheme: bearer

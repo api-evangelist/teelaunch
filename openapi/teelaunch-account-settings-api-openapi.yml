@@ -1,0 +1,123 @@
+openapi: 3.0.0
+info:
+  title: teelaunch Account Account Settings API
+  description: Teelaunch print-on-demand REST API. Manage account and settings, browse the blank product catalog, create and manage products, submit and manage orders, and retrieve shipment tracking across connected sales-channel platforms and stores. Authenticated with a Bearer (JWT) API token generated from teelaunch Developer Settings.
+  version: 1.0.0
+servers:
+- url: https://api.teelaunch.com/api/v1
+  description: Production base URL
+tags:
+- name: Account Settings
+  description: Account Settings
+paths:
+  /account/settings:
+    get:
+      tags:
+      - Account Settings
+      summary: Get a list of all account settings or search based on a specific key.
+      description: 'Get Account Settings
+
+
+        Get a list of all account settings or search based on a specific key. You can perform partial or fuzzy searching on setting keys by entering a partial key or keyword.'
+      operationId: 36147cdcf2d975057c6846c7a43a481b
+      parameters:
+      - name: search_key
+        in: query
+        description: 'Search settings by a specific key, allowing partial or fuzzy searching. Example: order'
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: 'Page number (default: 1)'
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /account/settings/{id}:
+    get:
+      tags:
+      - Account Settings
+      summary: Get Account Setting By Id
+      description: 'Get Account Setting By Id.
+
+
+        Get a specific account setting by its Id.'
+      operationId: 849c2a043635e8e054c3cfb802078d84
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the Account Setting
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /account/settings/{accountId}:
+    put:
+      tags:
+      - Account Settings
+      summary: Update Account Setting
+      description: 'Update Account Setting
+
+
+        Update account setting by Account Id and Key'
+      operationId: b3d49efa73678cddfc3a06c3da79a875
+      parameters:
+      - name: accountId
+        in: path
+        description: ID of the Account
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: Request body for updating account setting
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                key:
+                  type: string
+                  example: setting_key
+                value:
+                  type: string
+                  example: new_setting_value
+              type: object
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '422':
+          description: Unprocessable Entity
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      name: bearerAuth
+      in: header
+      bearerFormat: JWT
+      scheme: bearer

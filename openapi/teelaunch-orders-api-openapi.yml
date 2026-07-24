@@ -1,0 +1,411 @@
+openapi: 3.0.0
+info:
+  title: teelaunch Account Orders API
+  description: Teelaunch print-on-demand REST API. Manage account and settings, browse the blank product catalog, create and manage products, submit and manage orders, and retrieve shipment tracking across connected sales-channel platforms and stores. Authenticated with a Bearer (JWT) API token generated from teelaunch Developer Settings.
+  version: 1.0.0
+servers:
+- url: https://api.teelaunch.com/api/v1
+  description: Production base URL
+tags:
+- name: Orders
+  description: Orders
+paths:
+  /orders:
+    get:
+      tags:
+      - Orders
+      summary: Get Orders
+      description: 'Get Orders
+
+
+        Get Account Orders'
+      operationId: 2f71f731d00917eaf4cf488100ee4a68
+      parameters:
+      - name: status
+        in: query
+        description: The status id you are looking for, insert 'all' to retrieve all statuses
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Paging limit (max 5)
+        required: true
+        schema:
+          type: integer
+          maximum: 5
+      - name: page
+        in: query
+        description: 'Page number (default: 1)'
+        required: false
+        schema:
+          type: integer
+      - name: start_date
+        in: query
+        description: The start date must be UNIX timestamps (positive integers)
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        description: The end date must be UNIX timestamps (positive integers)
+        required: false
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+    post:
+      tags:
+      - Orders
+      summary: Store Order
+      description: 'Store Order
+
+
+        Store order'
+      operationId: 2bbb6d29d3345bb1d0d38877b33030f0
+      requestBody:
+        description: Request body for storing an order
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                details:
+                  properties:
+                    email:
+                      type: string
+                      example: user@example.com
+                    phone:
+                      type: string
+                      example: '1234567890'
+                    firstName:
+                      type: string
+                      example: John
+                    lastName:
+                      type: string
+                      example: Doe
+                    address1:
+                      type: string
+                      example: 123 Main St
+                    address2:
+                      type: string
+                      example: Apt 456
+                    city:
+                      type: string
+                      example: City
+                    state:
+                      type: string
+                      example: State
+                    zip:
+                      type: string
+                      example: '12345'
+                    country:
+                      type: string
+                      example: Country
+                    platformStoreName:
+                      type: string
+                      example: Store Name
+                  type: object
+                items:
+                  type: array
+                  items:
+                    properties:
+                      variant_id:
+                        type: string
+                        example: variant_id
+                      quantity:
+                        type: number
+                        example: 5
+                    type: object
+              type: object
+      responses:
+        '200':
+          description: Successful response
+        '422':
+          description: Unprocessable Entity
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /orders/{id}:
+    get:
+      tags:
+      - Orders
+      summary: Get Order By Id
+      description: 'Get Order By Id
+
+
+        Get account order by id'
+      operationId: 50d90d5c46e6459e22cbd89ca05e879f
+      parameters:
+      - name: id
+        in: path
+        description: Order id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /orders/{id}/cancel:
+    post:
+      tags:
+      - Orders
+      summary: Cancel Order
+      description: 'Cancel Order
+
+
+        Cancel account order. Note that only hold and pending orders can be canceled'
+      operationId: 59facf5d09499d6376eb0c9731cdb736
+      parameters:
+      - name: id
+        in: path
+        description: Order id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '422':
+          description: Unprocessable Entity
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /orders/{id}/release:
+    post:
+      tags:
+      - Orders
+      summary: Release Order
+      description: 'Release Order
+
+
+        Release account order. Note that only hold and out of stock orders can be released'
+      operationId: 3a94a0e0d5c256d26f33cd58de6fab66
+      parameters:
+      - name: id
+        in: path
+        description: Order id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '422':
+          description: Unprocessable Entity
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /orders/{id}/hold:
+    post:
+      tags:
+      - Orders
+      summary: Hold Order
+      description: 'Hold Order
+
+
+        Hold account order. Note that only pending orders can be set to Hold'
+      operationId: d29a3a373c10dfb35f2d71743c9b20cd
+      parameters:
+      - name: id
+        in: path
+        description: Order id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '422':
+          description: Unprocessable Entity
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /orders/pro:
+    post:
+      tags:
+      - Orders
+      summary: Create Order from variant
+      description: Create Order Pro
+      operationId: d8d545a21521bc4d460011d0f946ddbe
+      requestBody:
+        description: Request body for storing an order
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                label:
+                  type: integer
+                  example: 1000
+                name:
+                  type: string
+                  example: test api product
+                email:
+                  type: string
+                  example: tarik@teelaunch.com
+                firstName:
+                  type: string
+                  example: tarek
+                lastName:
+                  type: string
+                  example: ibrahim
+                phone:
+                  type: string
+                  example: '81646800'
+                address1:
+                  type: string
+                  example: 123 Main St
+                address2:
+                  type: string
+                  example: Apt 4B
+                city:
+                  type: string
+                  example: Cityville
+                state:
+                  type: string
+                  example: CA
+                zip:
+                  type: string
+                  example: '12345'
+                country:
+                  type: string
+                  example: US
+                variants:
+                  type: array
+                  items:
+                    properties:
+                      id:
+                        type: integer
+                        example: 1181
+                      images:
+                        type: array
+                        items:
+                          properties:
+                            url:
+                              type: string
+                              example: https://teelaunch-2.s3.us-west-2.amazonaws.com/accounts/3/products/100000544685/art-files/649065/Hoodie_CarolinaBlue_XL_LeftChest_Chloe.png
+                            stage:
+                              type: string
+                              example: Front Shirt
+                          type: object
+                      quantity:
+                        type: integer
+                        example: 1
+                      TextPersonalizer:
+                        type: string
+                        example: ''
+                      shippingLabel:
+                        type: string
+                        example: ''
+                    type: object
+              type: object
+      responses:
+        '200':
+          description: Successful response
+        '422':
+          description: Unprocessable Entity
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /orders/{id}/shipments:
+    get:
+      tags:
+      - Orders
+      summary: Get Shipment by Order ID
+      description: Get Order Shipments
+      operationId: 240dd75ed623c423755bef1843635581
+      parameters:
+      - name: id
+        in: path
+        description: Order id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /orders/line-item/{id}/shipments:
+    get:
+      tags:
+      - Orders
+      summary: Get Shipment by Order Line Item ID
+      description: Get Order Line Item Shipments
+      operationId: b7e91b64cf7a7b7cf6d4018b3bdcdb69
+      parameters:
+      - name: id
+        in: path
+        description: Order Line Item id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /orders/platform/{id}/shipments:
+    get:
+      tags:
+      - Orders
+      summary: Get Shipment by Platform Order Id
+      description: Get Shipments by platform order id
+      operationId: d5e42a4442f4058bb2830cc58e623f97
+      parameters:
+      - name: id
+        in: path
+        description: Platform Order Id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      name: bearerAuth
+      in: header
+      bearerFormat: JWT
+      scheme: bearer

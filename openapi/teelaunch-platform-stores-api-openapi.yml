@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  title: teelaunch Account Platform Stores API
+  description: Teelaunch print-on-demand REST API. Manage account and settings, browse the blank product catalog, create and manage products, submit and manage orders, and retrieve shipment tracking across connected sales-channel platforms and stores. Authenticated with a Bearer (JWT) API token generated from teelaunch Developer Settings.
+  version: 1.0.0
+servers:
+- url: https://api.teelaunch.com/api/v1
+  description: Production base URL
+tags:
+- name: Platform Stores
+  description: Platform Stores
+paths:
+  /stores:
+    get:
+      tags:
+      - Platform Stores
+      summary: Get Stores
+      description: 'Get Stores
+
+
+        Get stores'
+      operationId: 029dfe0bb9acd7df4230201a637a1ac1
+      parameters:
+      - name: limit
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: 'Page number (default: 1)'
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /stores/{id}:
+    get:
+      tags:
+      - Platform Stores
+      summary: Get Store
+      description: 'Get Store
+
+
+        Get store by Id'
+      operationId: 5ebb71f384e9969ae7bfca07c4cf7450
+      parameters:
+      - name: id
+        in: path
+        description: Platform Store Id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      name: bearerAuth
+      in: header
+      bearerFormat: JWT
+      scheme: bearer

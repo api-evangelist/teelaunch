@@ -1,0 +1,80 @@
+openapi: 3.0.0
+info:
+  title: teelaunch Account Products API
+  description: Teelaunch print-on-demand REST API. Manage account and settings, browse the blank product catalog, create and manage products, submit and manage orders, and retrieve shipment tracking across connected sales-channel platforms and stores. Authenticated with a Bearer (JWT) API token generated from teelaunch Developer Settings.
+  version: 1.0.0
+servers:
+- url: https://api.teelaunch.com/api/v1
+  description: Production base URL
+tags:
+- name: Products
+  description: Products
+paths:
+  /products:
+    get:
+      tags:
+      - Products
+      summary: Get Products
+      description: Get account products with variants
+      operationId: cbd3820f1c54e85489d86c79c20ec741
+      parameters:
+      - name: limit
+        in: query
+        description: Maximum number of products to retrieve (required, max 5)
+        required: true
+        schema:
+          type: integer
+          maximum: 5
+      - name: page
+        in: query
+        description: Page number (default value is 1)
+        schema:
+          type: integer
+          default: 1
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: responses/Products/index.json
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /products/{id}:
+    get:
+      tags:
+      - Products
+      summary: Get Product By Id
+      description: 'Get Product By Id
+
+
+        Get Account Product By Id'
+      operationId: 163fa1b107c906fbd20e5a804078dfa4
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      name: bearerAuth
+      in: header
+      bearerFormat: JWT
+      scheme: bearer

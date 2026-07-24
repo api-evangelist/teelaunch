@@ -1,0 +1,162 @@
+openapi: 3.0.0
+info:
+  title: teelaunch Account Blank API
+  description: Teelaunch print-on-demand REST API. Manage account and settings, browse the blank product catalog, create and manage products, submit and manage orders, and retrieve shipment tracking across connected sales-channel platforms and stores. Authenticated with a Bearer (JWT) API token generated from teelaunch Developer Settings.
+  version: 1.0.0
+servers:
+- url: https://api.teelaunch.com/api/v1
+  description: Production base URL
+tags:
+- name: Blank
+  description: Blank
+paths:
+  /blanks:
+    get:
+      tags:
+      - Blank
+      summary: Get Blanks
+      description: 'Get Blanks
+
+
+        Get account blanks with vendor, category, image, variants and options'
+      operationId: f33ed3c07d628928c695d015706213e2
+      parameters:
+      - name: limit
+        in: query
+        description: Paging limit (max 5)
+        required: true
+        schema:
+          type: integer
+          maximum: 5
+      - name: page
+        in: query
+        description: 'Page number (default: 1)'
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /blanks/{id}:
+    get:
+      tags:
+      - Blank
+      summary: Get Blank By Id
+      description: 'Get Blank By Id
+
+
+        Retrieve detailed information about a specific blank identified by its unique ID,
+
+        including vendor, category, image, variants, and options.'
+      operationId: 4073123195b174f93c22a2e39ba43e84
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the blank to retrieve.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /blanks/country/shipping/cost/{id}:
+    get:
+      tags:
+      - Blank
+      summary: Get Country Shipping Cost By Blank Variant Id
+      description: Get Country Shipping Cost By Blank Variant Id
+      operationId: 9c109d7727861f3df589d68698789840
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the blank variant to retrieve.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /blanks/{id}/create:
+    post:
+      tags:
+      - Blank
+      summary: Create Product by Blank Id
+      description: 'Create Product by Blank Id
+
+
+        Create product by blank id with all variants. Note that only MONOGRAM blank category doesn''t need images as bodyParam'
+      operationId: b8af01928da4a18ca202e09b28f49041
+      parameters:
+      - name: id
+        in: path
+        description: Blank id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Request body for creating a product
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                  example: Product Name
+                description:
+                  type: string
+                  example: Product Description
+                variants:
+                  type: array
+                  items:
+                    properties:
+                      id:
+                        type: integer
+                    type: integer
+                images:
+                  type: array
+                  items:
+                    properties:
+                      url:
+                        type: string
+                        example: https://example.com/image.jpg
+                      position:
+                        type: string
+                        example: front
+                      location:
+                        type: string
+                        example: center
+                      offset:
+                        type: string
+                        example: '0'
+                    type: object
+              type: object
+      responses:
+        '200':
+          description: Successful response
+        '422':
+          description: Unprocessable Entity
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      name: bearerAuth
+      in: header
+      bearerFormat: JWT
+      scheme: bearer

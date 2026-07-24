@@ -1,0 +1,153 @@
+openapi: 3.0.0
+info:
+  title: teelaunch Account Platform Store Products API
+  description: Teelaunch print-on-demand REST API. Manage account and settings, browse the blank product catalog, create and manage products, submit and manage orders, and retrieve shipment tracking across connected sales-channel platforms and stores. Authenticated with a Bearer (JWT) API token generated from teelaunch Developer Settings.
+  version: 1.0.0
+servers:
+- url: https://api.teelaunch.com/api/v1
+  description: Production base URL
+tags:
+- name: Platform Store Products
+  description: Platform Store Products
+paths:
+  /stores/{platformStoreId}/products/{id}:
+    get:
+      tags:
+      - Platform Store Products
+      summary: Get Platform Product By Id
+      description: 'Get Platform Product By Id
+
+
+        Get platform product by id'
+      operationId: 3fa7a6faf46bb48fd6a78c2a133d7cf8
+      parameters:
+      - name: platformStoreId
+        in: path
+        description: Platform Store Id
+        required: true
+        schema:
+          type: integer
+      - name: id
+        in: path
+        description: Platform Store Product Id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /stores/{platformStoreId}/products:
+    get:
+      tags:
+      - Platform Store Products
+      summary: Get Platform Products
+      description: 'Get Platform Products
+
+
+        Get platform products'
+      operationId: aeb6e9973ad802d72917350ef1b41e2d
+      parameters:
+      - name: platformStoreId
+        in: path
+        description: platformStoreId
+        required: true
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        description: max 5
+        required: true
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: default value is 1
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /stores/{platformStoreId}/products/{id}/ignore:
+    post:
+      tags:
+      - Platform Store Products
+      summary: Ignore Platform Product
+      description: 'Ignore Platform Product
+
+
+        Ignore platform product'
+      operationId: 2636ded800a48cf2f66eefa4db1cf915
+      parameters:
+      - name: platformStoreId
+        in: path
+        description: platformStoreId
+        required: true
+        schema:
+          type: integer
+      - name: id
+        in: path
+        description: productId
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /stores/{platformStoreId}/products/{id}/unignore:
+    post:
+      tags:
+      - Platform Store Products
+      summary: Unignore Platform Product
+      description: 'Unignore Platform Product
+
+
+        Unignore platform product'
+      operationId: 9f1bf75602027f29bba07b1ffb89d345
+      parameters:
+      - name: platformStoreId
+        in: path
+        description: platformStoreId
+        required: true
+        schema:
+          type: integer
+      - name: id
+        in: path
+        description: Platform store product id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      name: bearerAuth
+      in: header
+      bearerFormat: JWT
+      scheme: bearer

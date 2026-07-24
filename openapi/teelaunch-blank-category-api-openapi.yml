@@ -1,0 +1,95 @@
+openapi: 3.0.0
+info:
+  title: teelaunch Account Blank Category API
+  description: Teelaunch print-on-demand REST API. Manage account and settings, browse the blank product catalog, create and manage products, submit and manage orders, and retrieve shipment tracking across connected sales-channel platforms and stores. Authenticated with a Bearer (JWT) API token generated from teelaunch Developer Settings.
+  version: 1.0.0
+servers:
+- url: https://api.teelaunch.com/api/v1
+  description: Production base URL
+tags:
+- name: Blank Category
+  description: Blank Category
+paths:
+  /categories:
+    get:
+      tags:
+      - Blank Category
+      summary: Get Blank Categories
+      description: 'Get Blank Categories
+
+
+        Get account blank categories'
+      operationId: 3cf29949d6a59edf1bfbdca9319518d9
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /categories/{id}:
+    get:
+      tags:
+      - Blank Category
+      summary: Get Blank Category By Id
+      description: 'Get Blank Category By Id
+
+
+        Retrieve information about a specific blank category identified by its unique ID.'
+      operationId: 7bd6346eeb8f9e067822a1bb5e554f97
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the blank category to retrieve.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /categories/{id}/blanks:
+    get:
+      tags:
+      - Blank Category
+      summary: Get blanks by category Id
+      description: Get Blanks By Category Id
+      operationId: a7238e30037699428ecc2f0a35538f48
+      parameters:
+      - name: id
+        in: path
+        description: Category id
+        required: true
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: 'Page number (default: 1)'
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      name: bearerAuth
+      in: header
+      bearerFormat: JWT
+      scheme: bearer

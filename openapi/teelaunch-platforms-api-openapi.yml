@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  title: teelaunch Account Platforms API
+  description: Teelaunch print-on-demand REST API. Manage account and settings, browse the blank product catalog, create and manage products, submit and manage orders, and retrieve shipment tracking across connected sales-channel platforms and stores. Authenticated with a Bearer (JWT) API token generated from teelaunch Developer Settings.
+  version: 1.0.0
+servers:
+- url: https://api.teelaunch.com/api/v1
+  description: Production base URL
+tags:
+- name: Platforms
+  description: Platforms
+paths:
+  /platforms:
+    get:
+      tags:
+      - Platforms
+      summary: Get Platforms
+      description: 'Get Platforms
+
+
+        Get account Platform with stores connected to each'
+      operationId: ea7be5e215e4581e1c38dc5a9c7414ef
+      parameters:
+      - name: limit
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: 'Page number (default: 1)'
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /platforms/{id}:
+    get:
+      tags:
+      - Platforms
+      summary: Get Platform
+      description: 'Get Platform
+
+
+        Get account Platform by id'
+      operationId: cc3d714e5f357e1dbe48c1dfd6c64ff1
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the platform.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      name: bearerAuth
+      in: header
+      bearerFormat: JWT
+      scheme: bearer

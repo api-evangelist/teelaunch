@@ -1,0 +1,76 @@
+openapi: 3.0.0
+info:
+  title: teelaunch Account Account Payment API
+  description: Teelaunch print-on-demand REST API. Manage account and settings, browse the blank product catalog, create and manage products, submit and manage orders, and retrieve shipment tracking across connected sales-channel platforms and stores. Authenticated with a Bearer (JWT) API token generated from teelaunch Developer Settings.
+  version: 1.0.0
+servers:
+- url: https://api.teelaunch.com/api/v1
+  description: Production base URL
+tags:
+- name: Account Payment
+  description: Account Payment
+paths:
+  /account/payment-history:
+    get:
+      tags:
+      - Account Payment
+      summary: Retrieve the payment history for the authenticated user's account.
+      description: 'Get Payment History
+
+
+        Retrieve the payment history for the authenticated user''s account.'
+      operationId: ad402e84d315e0489a7293ad6c657278
+      parameters:
+      - name: limit
+        in: query
+        description: Paging limit
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: 'Page number (default: 1)'
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /account/payment-history/{id}:
+    get:
+      tags:
+      - Account Payment
+      summary: Retrieve the payment history for a specific payment identified by its unique ID.
+      description: 'Get Payment History By Id.
+
+
+        Retrieve the payment history for a specific payment identified by its unique ID.'
+      operationId: d0f6b4a170c810850fa4232399e6dddb
+      parameters:
+      - name: id
+        in: path
+        description: The Id of the Payment History
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      name: bearerAuth
+      in: header
+      bearerFormat: JWT
+      scheme: bearer

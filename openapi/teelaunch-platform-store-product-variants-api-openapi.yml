@@ -1,0 +1,122 @@
+openapi: 3.0.0
+info:
+  title: teelaunch Account Platform Store Product Variants API
+  description: Teelaunch print-on-demand REST API. Manage account and settings, browse the blank product catalog, create and manage products, submit and manage orders, and retrieve shipment tracking across connected sales-channel platforms and stores. Authenticated with a Bearer (JWT) API token generated from teelaunch Developer Settings.
+  version: 1.0.0
+servers:
+- url: https://api.teelaunch.com/api/v1
+  description: Production base URL
+tags:
+- name: Platform Store Product Variants
+  description: Platform Store Product Variants
+paths:
+  /stores/products/variants/{id}/unlink:
+    post:
+      tags:
+      - Platform Store Product Variants
+      summary: Unlink Platform Product Variants
+      description: Unlink Platform Product Variants
+      operationId: dbbcc24e2bc2247f2f013ea856fdb091
+      parameters:
+      - name: id
+        in: path
+        description: platform store product platform store product Platform store product variant id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Variant unlinked!
+                type: object
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /stores/products/variants/{id}/ignore:
+    post:
+      tags:
+      - Platform Store Product Variants
+      summary: Ignore Platform Product Variants
+      description: Ignore platform product variants
+      operationId: 4c4c73196aad959c84a922c39cf1be8e
+      parameters:
+      - name: id
+        in: path
+        description: Platform store product variant id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Variant ignored!
+                type: object
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+  /stores/products/variants/{id}/unignore:
+    post:
+      tags:
+      - Platform Store Product Variants
+      summary: Ignore Platform Product Variants
+      description: Unignore Platform Product Variants
+      operationId: 988135adcca30eef5d9d08bc0930b695
+      parameters:
+      - name: id
+        in: path
+        description: Platform store product variant id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Variant Unignored!
+                type: object
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+      - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      name: bearerAuth
+      in: header
+      bearerFormat: JWT
+      scheme: bearer
