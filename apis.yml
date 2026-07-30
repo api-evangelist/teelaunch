@@ -10,7 +10,20 @@ description: Teelaunch is a print-on-demand (POD) platform that lets creators de
   developers and high-volume merchants automate the full POD workflow - reading the
   blank product catalog, creating products, submitting and managing orders, and
   retrieving shipment tracking - independent of any storefront app.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/teelaunch.png
 tags:
 - Print on Demand
 - POD
@@ -25,125 +38,180 @@ specificationVersion: '0.19'
 apis:
 - aid: teelaunch:teelaunch-account-api
   name: Teelaunch Account API
+  description: Account
+  humanURL: https://api.teelaunch.com/documentation
+  baseURL: https://api.teelaunch.com/api/v1
   tags:
   - Account
-  - Settings
-  - Billing
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  properties:
+  - type: OpenAPI
+    url: openapi/teelaunch-account-api-openapi.yml
+  - type: Documentation
+    url: https://api.teelaunch.com/documentation
+  - type: Authentication
+    url: https://support.teelaunch.com/portal/en/kb/articles/api-token
+  - type: PostmanCollection
+    url: collections/teelaunch.postman_collection.json
+- aid: teelaunch:teelaunch-account-payment-api
+  name: Teelaunch Account Payment API
+  description: Account Payment
   humanURL: https://api.teelaunch.com/documentation
   baseURL: https://api.teelaunch.com/api/v1
-  properties:
-  - url: https://api.teelaunch.com/documentation
-    type: Documentation
-  - url: https://support.teelaunch.com/portal/en/kb/articles/api-token
-    type: Authentication
-  - url: openapi/teelaunch-openapi.yml
-    type: OpenAPI
-  - url: collections/teelaunch.postman_collection.json
-    type: PostmanCollection
-  description: Read the authenticated user's account details, manage account settings,
-    store a billing address, and retrieve payment history. Covers GET /account,
-    the /account/settings endpoints, and /account/payment-history.
-- aid: teelaunch:teelaunch-blank-catalog-api
-  name: Teelaunch Blank Catalog API
   tags:
-  - Catalog
-  - Blanks
-  - Products
-  - Variants
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  - Account Payment
+  properties:
+  - type: OpenAPI
+    url: openapi/teelaunch-account-payment-api-openapi.yml
+  - type: Documentation
+    url: https://api.teelaunch.com/documentation
+  - type: Authentication
+    url: https://support.teelaunch.com/portal/en/kb/articles/api-token
+  - type: PostmanCollection
+    url: collections/teelaunch.postman_collection.json
+- aid: teelaunch:teelaunch-account-settings-api
+  name: Teelaunch Account Settings API
+  description: Account Settings
   humanURL: https://api.teelaunch.com/documentation
   baseURL: https://api.teelaunch.com/api/v1
-  properties:
-  - url: https://api.teelaunch.com/documentation
-    type: Documentation
-  - url: openapi/teelaunch-openapi.yml
-    type: OpenAPI
-  - url: collections/teelaunch.postman_collection.json
-    type: PostmanCollection
-  description: Browse Teelaunch's blank (base) product catalog - list blank categories,
-    list and get individual blanks and their variants, look up per-country shipping
-    cost for a blank variant, and create a product directly from a blank. Covers the
-    /categories and /blanks endpoints.
-- aid: teelaunch:teelaunch-products-api
-  name: Teelaunch Products API
   tags:
-  - Products
-  - Catalog
-  - Fulfillment
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  - Account Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/teelaunch-account-settings-api-openapi.yml
+  - type: Documentation
+    url: https://api.teelaunch.com/documentation
+  - type: Authentication
+    url: https://support.teelaunch.com/portal/en/kb/articles/api-token
+  - type: PostmanCollection
+    url: collections/teelaunch.postman_collection.json
+- aid: teelaunch:teelaunch-blank-api
+  name: Teelaunch Blank API
+  description: Blank
   humanURL: https://api.teelaunch.com/documentation
   baseURL: https://api.teelaunch.com/api/v1
+  tags:
+  - Blank
   properties:
-  - url: https://api.teelaunch.com/documentation
-    type: Documentation
-  - url: openapi/teelaunch-openapi.yml
-    type: OpenAPI
-  - url: collections/teelaunch.postman_collection.json
-    type: PostmanCollection
-  description: List and retrieve the products in a Teelaunch account, update a product,
-    and hold or release the orders tied to a product. Covers GET /products,
-    GET /products/{id}, and the product update and hold/release order operations.
+  - type: OpenAPI
+    url: openapi/teelaunch-blank-api-openapi.yml
+  - type: Documentation
+    url: https://api.teelaunch.com/documentation
+  - type: Authentication
+    url: https://support.teelaunch.com/portal/en/kb/articles/api-token
+  - type: PostmanCollection
+    url: collections/teelaunch.postman_collection.json
+- aid: teelaunch:teelaunch-blank-category-api
+  name: Teelaunch Blank Category API
+  description: Blank Category
+  humanURL: https://api.teelaunch.com/documentation
+  baseURL: https://api.teelaunch.com/api/v1
+  tags:
+  - Blank Category
+  properties:
+  - type: OpenAPI
+    url: openapi/teelaunch-blank-category-api-openapi.yml
+  - type: Documentation
+    url: https://api.teelaunch.com/documentation
+  - type: Authentication
+    url: https://support.teelaunch.com/portal/en/kb/articles/api-token
+  - type: PostmanCollection
+    url: collections/teelaunch.postman_collection.json
 - aid: teelaunch:teelaunch-orders-api
   name: Teelaunch Orders API
+  description: Orders
+  humanURL: https://api.teelaunch.com/documentation
+  baseURL: https://api.teelaunch.com/api/v1
   tags:
   - Orders
-  - Fulfillment
-  - Production
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  properties:
+  - type: OpenAPI
+    url: openapi/teelaunch-orders-api-openapi.yml
+  - type: Documentation
+    url: https://api.teelaunch.com/documentation
+  - type: Authentication
+    url: https://support.teelaunch.com/portal/en/kb/articles/api-token
+  - type: PostmanCollection
+    url: collections/teelaunch.postman_collection.json
+- aid: teelaunch:teelaunch-platform-store-product-variants-api
+  name: Teelaunch Platform Store Product Variants API
+  description: Platform Store Product Variants
   humanURL: https://api.teelaunch.com/documentation
   baseURL: https://api.teelaunch.com/api/v1
-  properties:
-  - url: https://api.teelaunch.com/documentation
-    type: Documentation
-  - url: openapi/teelaunch-openapi.yml
-    type: OpenAPI
-  - url: collections/teelaunch.postman_collection.json
-    type: PostmanCollection
-  description: Submit and manage print-on-demand orders - list and get orders, store
-    a new order, create an order from a variant (orders/pro), and cancel, hold, or
-    release orders to control production. Covers GET/POST /orders and the order
-    lifecycle actions.
-- aid: teelaunch:teelaunch-shipping-tracking-api
-  name: Teelaunch Shipping & Tracking API
   tags:
-  - Shipping
-  - Shipments
-  - Tracking
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  - Platform Store Product Variants
+  properties:
+  - type: OpenAPI
+    url: openapi/teelaunch-platform-store-product-variants-api-openapi.yml
+  - type: Documentation
+    url: https://api.teelaunch.com/documentation
+  - type: Authentication
+    url: https://support.teelaunch.com/portal/en/kb/articles/api-token
+  - type: PostmanCollection
+    url: collections/teelaunch.postman_collection.json
+- aid: teelaunch:teelaunch-platform-store-products-api
+  name: Teelaunch Platform Store Products API
+  description: Platform Store Products
   humanURL: https://api.teelaunch.com/documentation
   baseURL: https://api.teelaunch.com/api/v1
+  tags:
+  - Platform Store Products
   properties:
-  - url: https://api.teelaunch.com/documentation
-    type: Documentation
-  - url: openapi/teelaunch-openapi.yml
-    type: OpenAPI
-  - url: collections/teelaunch.postman_collection.json
-    type: PostmanCollection
-  description: Retrieve shipment and tracking information for fulfilled orders - by
-    Teelaunch order ID, by order line-item ID, or by platform order ID - plus
-    per-country shipping cost lookups for blank variants. Teelaunch also posts
-    shipment tracking to a webhook URL configured in Developer Settings.
-- aid: teelaunch:teelaunch-platforms-stores-api
-  name: Teelaunch Platforms & Stores API
+  - type: OpenAPI
+    url: openapi/teelaunch-platform-store-products-api-openapi.yml
+  - type: Documentation
+    url: https://api.teelaunch.com/documentation
+  - type: Authentication
+    url: https://support.teelaunch.com/portal/en/kb/articles/api-token
+  - type: PostmanCollection
+    url: collections/teelaunch.postman_collection.json
+- aid: teelaunch:teelaunch-platform-stores-api
+  name: Teelaunch Platform Stores API
+  description: Platform Stores
+  humanURL: https://api.teelaunch.com/documentation
+  baseURL: https://api.teelaunch.com/api/v1
+  tags:
+  - Platform Stores
+  properties:
+  - type: OpenAPI
+    url: openapi/teelaunch-platform-stores-api-openapi.yml
+  - type: Documentation
+    url: https://api.teelaunch.com/documentation
+  - type: Authentication
+    url: https://support.teelaunch.com/portal/en/kb/articles/api-token
+  - type: PostmanCollection
+    url: collections/teelaunch.postman_collection.json
+- aid: teelaunch:teelaunch-platforms-api
+  name: Teelaunch Platforms API
+  description: Platforms
+  humanURL: https://api.teelaunch.com/documentation
+  baseURL: https://api.teelaunch.com/api/v1
   tags:
   - Platforms
-  - Stores
-  - Integrations
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  properties:
+  - type: OpenAPI
+    url: openapi/teelaunch-platforms-api-openapi.yml
+  - type: Documentation
+    url: https://api.teelaunch.com/documentation
+  - type: Authentication
+    url: https://support.teelaunch.com/portal/en/kb/articles/api-token
+  - type: PostmanCollection
+    url: collections/teelaunch.postman_collection.json
+- aid: teelaunch:teelaunch-products-api
+  name: Teelaunch Products API
+  description: Products
   humanURL: https://api.teelaunch.com/documentation
   baseURL: https://api.teelaunch.com/api/v1
+  tags:
+  - Products
   properties:
-  - url: https://api.teelaunch.com/documentation
-    type: Documentation
-  - url: openapi/teelaunch-openapi.yml
-    type: OpenAPI
-  - url: collections/teelaunch.postman_collection.json
-    type: PostmanCollection
-  description: Work with connected sales-channel platforms (Shopify, Etsy, BigCommerce,
-    and others) and their stores - list platforms and stores, list and get platform
-    products, and link, unlink, ignore, or unignore platform products and their
-    variants. Covers the /platforms and /stores endpoints.
+  - type: OpenAPI
+    url: openapi/teelaunch-products-api-openapi.yml
+  - type: Documentation
+    url: https://api.teelaunch.com/documentation
+  - type: Authentication
+    url: https://support.teelaunch.com/portal/en/kb/articles/api-token
+  - type: PostmanCollection
+    url: collections/teelaunch.postman_collection.json
 common:
 - type: AgenticAccess
   url: agentic-access/teelaunch-agentic-access.yml
