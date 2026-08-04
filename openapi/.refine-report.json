@@ -1,0 +1,34 @@
+{
+  "provider": "teelaunch",
+  "sources": [
+    "teelaunch-account-api-openapi.yml",
+    "teelaunch-account-payment-api-openapi.yml",
+    "teelaunch-account-settings-api-openapi.yml",
+    "teelaunch-blank-api-openapi.yml",
+    "teelaunch-blank-category-api-openapi.yml",
+    "teelaunch-orders-api-openapi.yml",
+    "teelaunch-platform-store-product-variants-api-openapi.yml",
+    "teelaunch-platform-store-products-api-openapi.yml",
+    "teelaunch-platform-stores-api-openapi.yml",
+    "teelaunch-platforms-api-openapi.yml",
+    "teelaunch-products-api-openapi.yml"
+  ],
+  "outputs": [
+    "teelaunch-account-api-openapi.yml",
+    "teelaunch-account-payment-api-openapi.yml",
+    "teelaunch-account-settings-api-openapi.yml",
+    "teelaunch-blank-api-openapi.yml",
+    "teelaunch-blank-category-api-openapi.yml",
+    "teelaunch-orders-api-openapi.yml",
+    "teelaunch-platform-store-product-variants-api-openapi.yml",
+    "teelaunch-platform-store-products-api-openapi.yml",
+    "teelaunch-platform-stores-api-openapi.yml",
+    "teelaunch-platforms-api-openapi.yml",
+    "teelaunch-products-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
