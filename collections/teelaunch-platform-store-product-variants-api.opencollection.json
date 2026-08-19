@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "teelaunch Account Platform Store Product Variants API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Platform Store Product Variants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Unlink Platform Product Variants",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.teelaunch.com/api/v1/stores/products/variants/:id/unlink",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "platform store product platform store product Platform store product variant id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Unlink Platform Product Variants"
+        },
+        {
+          "info": {
+            "name": "Ignore Platform Product Variants",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.teelaunch.com/api/v1/stores/products/variants/:id/ignore",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Platform store product variant id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Ignore platform product variants"
+        },
+        {
+          "info": {
+            "name": "Ignore Platform Product Variants",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.teelaunch.com/api/v1/stores/products/variants/:id/unignore",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Platform store product variant id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Unignore Platform Product Variants"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

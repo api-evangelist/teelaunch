@@ -1,0 +1,264 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "teelaunch Account Orders API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.teelaunch.com/api/v1/orders",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "The status id you are looking for, insert 'all' to retrieve all statuses"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Paging limit (max 5)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (default: 1)"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "The start date must be UNIX timestamps (positive integers)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "The end date must be UNIX timestamps (positive integers)"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Orders\n\nGet Account Orders"
+        },
+        {
+          "info": {
+            "name": "Store Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.teelaunch.com/api/v1/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Store Order\n\nStore order"
+        },
+        {
+          "info": {
+            "name": "Get Order By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.teelaunch.com/api/v1/orders/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Order id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Order By Id\n\nGet account order by id"
+        },
+        {
+          "info": {
+            "name": "Cancel Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.teelaunch.com/api/v1/orders/:id/cancel",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Order id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Cancel Order\n\nCancel account order. Note that only hold and pending orders can be canceled"
+        },
+        {
+          "info": {
+            "name": "Release Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.teelaunch.com/api/v1/orders/:id/release",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Order id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Release Order\n\nRelease account order. Note that only hold and out of stock orders can be released"
+        },
+        {
+          "info": {
+            "name": "Hold Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.teelaunch.com/api/v1/orders/:id/hold",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Order id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Hold Order\n\nHold account order. Note that only pending orders can be set to Hold"
+        },
+        {
+          "info": {
+            "name": "Create Order from variant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.teelaunch.com/api/v1/orders/pro",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Order Pro"
+        },
+        {
+          "info": {
+            "name": "Get Shipment by Order ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.teelaunch.com/api/v1/orders/:id/shipments",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Order id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Order Shipments"
+        },
+        {
+          "info": {
+            "name": "Get Shipment by Order Line Item ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.teelaunch.com/api/v1/orders/line-item/:id/shipments",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Order Line Item id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Order Line Item Shipments"
+        },
+        {
+          "info": {
+            "name": "Get Shipment by Platform Order Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.teelaunch.com/api/v1/orders/platform/:id/shipments",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Platform Order Id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Shipments by platform order id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

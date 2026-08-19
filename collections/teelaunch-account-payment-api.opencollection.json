@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "teelaunch Account Account Payment API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account Payment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve the payment history for the authenticated user's account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.teelaunch.com/api/v1/account/payment-history",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Paging limit"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (default: 1)"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Payment History\n\nRetrieve the payment history for the authenticated user's account."
+        },
+        {
+          "info": {
+            "name": "Retrieve the payment history for a specific payment identified by its unique ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.teelaunch.com/api/v1/account/payment-history/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the Payment History"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Payment History By Id.\n\nRetrieve the payment history for a specific payment identified by its unique ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

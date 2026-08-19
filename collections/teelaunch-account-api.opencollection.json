@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "teelaunch Account API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get detailed information about the authenticated user's account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.teelaunch.com/api/v1/account",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Account Information\n\nGet detailed information about the authenticated user's account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

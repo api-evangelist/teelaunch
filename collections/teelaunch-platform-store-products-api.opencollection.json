@@ -1,0 +1,140 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "teelaunch Account Platform Store Products API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Platform Store Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Platform Product By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.teelaunch.com/api/v1/stores/:platformStoreId/products/:id",
+            "params": [
+              {
+                "name": "platformStoreId",
+                "value": "",
+                "type": "path",
+                "description": "Platform Store Id"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Platform Store Product Id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Platform Product By Id\n\nGet platform product by id"
+        },
+        {
+          "info": {
+            "name": "Get Platform Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.teelaunch.com/api/v1/stores/:platformStoreId/products",
+            "params": [
+              {
+                "name": "platformStoreId",
+                "value": "",
+                "type": "path",
+                "description": "platformStoreId"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "max 5"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "default value is 1"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Platform Products\n\nGet platform products"
+        },
+        {
+          "info": {
+            "name": "Ignore Platform Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.teelaunch.com/api/v1/stores/:platformStoreId/products/:id/ignore",
+            "params": [
+              {
+                "name": "platformStoreId",
+                "value": "",
+                "type": "path",
+                "description": "platformStoreId"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "productId"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Ignore Platform Product\n\nIgnore platform product"
+        },
+        {
+          "info": {
+            "name": "Unignore Platform Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.teelaunch.com/api/v1/stores/:platformStoreId/products/:id/unignore",
+            "params": [
+              {
+                "name": "platformStoreId",
+                "value": "",
+                "type": "path",
+                "description": "platformStoreId"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Platform store product id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Unignore Platform Product\n\nUnignore platform product"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

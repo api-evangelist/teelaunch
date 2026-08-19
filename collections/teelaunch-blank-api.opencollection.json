@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "teelaunch Account Blank API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Blank",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Blanks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.teelaunch.com/api/v1/blanks",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Paging limit (max 5)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (default: 1)"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Blanks\n\nGet account blanks with vendor, category, image, variants and options"
+        },
+        {
+          "info": {
+            "name": "Get Blank By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.teelaunch.com/api/v1/blanks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the blank to retrieve."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Blank By Id\n\nRetrieve detailed information about a specific blank identified by its unique ID,\nincluding vendor, category, image, variants, and options."
+        },
+        {
+          "info": {
+            "name": "Get Country Shipping Cost By Blank Variant Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.teelaunch.com/api/v1/blanks/country/shipping/cost/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the blank variant to retrieve."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Country Shipping Cost By Blank Variant Id"
+        },
+        {
+          "info": {
+            "name": "Create Product by Blank Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.teelaunch.com/api/v1/blanks/:id/create",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Blank id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Product by Blank Id\n\nCreate product by blank id with all variants. Note that only MONOGRAM blank category doesn't need images as bodyParam"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

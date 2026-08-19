@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "teelaunch Account Account Settings API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of all account settings or search based on a specific key.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.teelaunch.com/api/v1/account/settings",
+            "params": [
+              {
+                "name": "search_key",
+                "value": "",
+                "type": "query",
+                "description": "Search settings by a specific key, allowing partial or fuzzy searching. Example: order"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (default: 1)"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Account Settings\n\nGet a list of all account settings or search based on a specific key. You can perform partial or fuzzy searching on setting keys by entering a partial key or keyword."
+        },
+        {
+          "info": {
+            "name": "Get Account Setting By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.teelaunch.com/api/v1/account/settings/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Account Setting"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Account Setting By Id.\n\nGet a specific account setting by its Id."
+        },
+        {
+          "info": {
+            "name": "Update Account Setting",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.teelaunch.com/api/v1/account/settings/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update Account Setting\n\nUpdate account setting by Account Id and Key"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
