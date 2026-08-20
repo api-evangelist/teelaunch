@@ -27,6 +27,14 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/teelaunch.
 tags:
 - Print on Demand
 - POD
+- E-Commerce
+- Fulfillment
+- Dropshipping
+- Order
+- Shipping
+tags_raw:
+- Print on Demand
+- POD
 - Ecommerce
 - Fulfillment
 - Dropshipping
@@ -122,6 +130,8 @@ apis:
   humanURL: https://api.teelaunch.com/documentation
   baseURL: https://api.teelaunch.com/api/v1
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -202,6 +212,8 @@ apis:
   humanURL: https://api.teelaunch.com/documentation
   baseURL: https://api.teelaunch.com/api/v1
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
