@@ -10,6 +10,18 @@ description: Teelaunch is a print-on-demand (POD) platform that lets creators de
   developers and high-volume merchants automate the full POD workflow - reading the
   blank product catalog, creating products, submitting and managing orders, and
   retrieving shipment tracking - independent of any storefront app.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
