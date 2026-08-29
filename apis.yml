@@ -237,6 +237,9 @@ apis:
   - type: PostmanCollection
     url: collections/teelaunch.postman_collection.json
 common:
+- type: CapabilityMap
+  url: capabilities/teelaunch-capability-edges.yml
+  name: Teelaunch Business Capability Map
 - type: AgenticAccess
   url: agentic-access/teelaunch-agentic-access.yml
 - type: DomainSecurity
