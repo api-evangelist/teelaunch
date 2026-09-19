@@ -209,6 +209,8 @@ apis:
   humanURL: https://api.teelaunch.com/documentation
   baseURL: https://api.teelaunch.com/api/v1
   tags:
+  - Platform
+  tags_raw:
   - Platforms
   properties:
   - type: OpenAPI
