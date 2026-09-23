@@ -1,17 +1,7 @@
 {
   "provider": "teelaunch",
   "sources": [
-    "teelaunch-account-api-openapi.yml",
-    "teelaunch-account-payment-api-openapi.yml",
-    "teelaunch-account-settings-api-openapi.yml",
-    "teelaunch-blank-api-openapi.yml",
-    "teelaunch-blank-category-api-openapi.yml",
-    "teelaunch-orders-api-openapi.yml",
-    "teelaunch-platform-store-product-variants-api-openapi.yml",
-    "teelaunch-platform-store-products-api-openapi.yml",
-    "teelaunch-platform-stores-api-openapi.yml",
-    "teelaunch-platforms-api-openapi.yml",
-    "teelaunch-products-api-openapi.yml"
+    "_original/teelaunch-openapi.yml"
   ],
   "outputs": [
     "teelaunch-account-api-openapi.yml",
@@ -29,6 +19,22 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "teelaunch-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "teelaunch-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teelaunch-account-payment-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teelaunch-account-settings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teelaunch-blank-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teelaunch-blank-category-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teelaunch-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teelaunch-platform-store-product-variants-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teelaunch-platform-store-products-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teelaunch-platform-stores-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teelaunch-platforms-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "teelaunch-products-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

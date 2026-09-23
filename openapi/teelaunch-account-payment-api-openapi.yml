@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: teelaunch Account Account Payment API
+  title: teelaunch Account Payment API
   description: Teelaunch print-on-demand REST API. Manage account and settings, browse the blank product catalog, create and manage products, submit and manage orders, and retrieve shipment tracking across connected sales-channel platforms and stores. Authenticated with a Bearer (JWT) API token generated from teelaunch Developer Settings.
   version: 1.0.0
 servers:
@@ -14,7 +14,7 @@ paths:
     get:
       tags:
       - Account Payment
-      summary: Retrieve the payment history for the authenticated user's account.
+      summary: Retrieve the payment history for the authenticated user's account
       description: 'Get Payment History
 
 
@@ -44,7 +44,7 @@ paths:
     get:
       tags:
       - Account Payment
-      summary: Retrieve the payment history for a specific payment identified by its unique ID.
+      summary: Retrieve the payment history for a specific payment identified by its unique ID
       description: 'Get Payment History By Id.
 
 
