@@ -1,5 +1,5 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/teelaunch/integrations
 - https://n8n.io/integrations/teelaunch/
@@ -10,7 +10,24 @@ checked:
 - https://monid.ai/tools/teelaunch
 - https://n8n.io/integrations/teelaunch/
 - https://zapier.com/apps/teelaunch/integrations
+- shopify/integrations/shopify-integration-edges.yml
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: Shopify (own)
+  partner: shopify
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://apps.shopify.com/teelaunch-1
+  mirror_of: shopify/integrations/shopify-integration-edges.yml
+  apps:
+  - 'teelaunch: Print on Demand'
+  listing_count: 1
+  detected: '2026-10-15'
+  detected_by: mirror-platform-listings.py
 templates: []
