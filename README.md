@@ -1,4 +1,4 @@
-# Teelaunch (teelaunch)
+# Teelaunch
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,89 +64,136 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Teelaunch is a print-on-demand (POD) platform that lets creators design, produce, and dropship custom products - apparel, drinkware, jewelry, home goods, tech accessories, and more - through connected sales channels like Shopify, Etsy, and BigCommerce. Beyond its storefront apps, Teelaunch publishes a documented public REST API that lets developers and high-volume merchants automate the full POD workflow independent of any storefront app.
+Teelaunch is a print-on-demand (POD) platform that lets creators design, produce, and dropship custom products - apparel, drinkware, jewelry, home goods, tech accessories, and more - through connected sales channels like Shopify, Etsy, and BigCommerce. Beyond its storefront apps, Teelaunch publishes a documented public REST API (base https://api.teelaunch.com/api/v1, Bearer/JWT auth) that lets developers and high-volume merchants automate the full POD workflow - reading the blank product catalog, creating products, submitting and managing orders, and retrieving shipment tracking - independent of any storefront app.
 
-**Access model:** The API is public and self-service, but gated behind account verification. Any Teelaunch account holder can generate a Bearer (JWT) API token from **Account → Settings → Developer Settings → Generate Token** (see the [API Token article](https://support.teelaunch.com/portal/en/kb/articles/api-token)). Accounts must be verified before the token functions - verification typically completes within 24 hours (up to 72). There is no separate API fee; you pay the standard per-order production and shipping cost when an order is produced.
+**Areas:** Print on Demand · POD · E-Commerce · Fulfillment · Dropshipping · Order · Shipping
 
-- **Base URL:** `https://api.teelaunch.com/api/v1`
-- **Authentication:** `Authorization: Bearer <token>` (JWT)
-- **Interactive docs:** [https://api.teelaunch.com/documentation](https://api.teelaunch.com/documentation) (L5 Swagger UI, OpenAPI 3.0)
-- **Machine-readable spec:** [`api-docs.json`](https://api.teelaunch.com/api-docs.json) / Postman collection: [`apiCollection.json`](https://api.teelaunch.com/apiCollection.json)
+## Teelaunch on APIs.io
 
-The endpoints in this catalog are **confirmed real** - transcribed from Teelaunch's own published OpenAPI 3.0 document and Postman collection - not modeled.
+Everything profiled for Teelaunch is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/teelaunch/](https://apis.io/providers/teelaunch/)** — or go straight to one of the APIs or properties below.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/teelaunch/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/teelaunch/refs/heads/main/apis.yml)
+### APIs (11)
 
-## Tags
+- [Teelaunch Account API](https://apis.io/apis/teelaunch/teelaunch-account-api/) — Account
+- [Teelaunch Account Payment API](https://apis.io/apis/teelaunch/teelaunch-account-payment-api/) — Account Payment
+- [Teelaunch Account Settings API](https://apis.io/apis/teelaunch/teelaunch-account-settings-api/) — Account Settings
+- [Teelaunch Blank API](https://apis.io/apis/teelaunch/teelaunch-blank-api/) — Blank
+- [Teelaunch Blank Category API](https://apis.io/apis/teelaunch/teelaunch-blank-category-api/) — Blank Category
+- [Teelaunch Orders API](https://apis.io/apis/teelaunch/teelaunch-orders-api/) — Orders
+- [Teelaunch Platform Store Product Variants API](https://apis.io/apis/teelaunch/teelaunch-platform-store-product-variants-api/) — Platform Store Product Variants
+- [Teelaunch Platform Store Products API](https://apis.io/apis/teelaunch/teelaunch-platform-store-products-api/) — Platform Store Products
+- [Teelaunch Platform Stores API](https://apis.io/apis/teelaunch/teelaunch-platform-stores-api/) — Platform Stores
+- [Teelaunch Platforms API](https://apis.io/apis/teelaunch/teelaunch-platforms-api/) — Platforms
+- [Teelaunch Products API](https://apis.io/apis/teelaunch/teelaunch-products-api/) — Products
 
-- Print on Demand
-- POD
-- Ecommerce
-- Fulfillment
-- Dropshipping
-- Orders
-- Shipping
+### Published properties
 
-## Timestamps
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- **Created:** 2026-07-11
-- **Modified:** 2026-07-11
+#### Agentic access (1)
 
-## APIs
+Which operations an agent can call, which act, and which need a human in the loop.
 
-### Teelaunch Account API
+- [Teelaunch Agentic Access](https://apis.io/agentic-access/teelaunch/teelaunch-agentic-access/)
 
-Read the authenticated user's account details, manage account settings, store a billing address, and retrieve payment history.
+#### Collections (11)
 
-- **Human URL:** [https://api.teelaunch.com/documentation](https://api.teelaunch.com/documentation)
-- **Base URL:** `https://api.teelaunch.com/api/v1`
+Postman and Open Collection request collections.
 
-### Teelaunch Blank Catalog API
+- [teelaunch Account API](https://apis.io/collections/teelaunch/open-teelaunch-account-api/)
+- [teelaunch Account Account Payment API](https://apis.io/collections/teelaunch/open-teelaunch-account-payment-api/)
+- [teelaunch Account Account Settings API](https://apis.io/collections/teelaunch/open-teelaunch-account-settings-api/)
+- [teelaunch Account Blank API](https://apis.io/collections/teelaunch/open-teelaunch-blank-api/)
+- [teelaunch Account Blank Category API](https://apis.io/collections/teelaunch/open-teelaunch-blank-category-api/)
+- [teelaunch Account Orders API](https://apis.io/collections/teelaunch/open-teelaunch-orders-api/)
+- [teelaunch Account Platform Store Product Variants API](https://apis.io/collections/teelaunch/open-teelaunch-platform-store-product-variants-api/)
+- [teelaunch Account Platform Store Products API](https://apis.io/collections/teelaunch/open-teelaunch-platform-store-products-api/)
+- [teelaunch Account Platform Stores API](https://apis.io/collections/teelaunch/open-teelaunch-platform-stores-api/)
+- [teelaunch Account Platforms API](https://apis.io/collections/teelaunch/open-teelaunch-platforms-api/)
+- [teelaunch Account Products API](https://apis.io/collections/teelaunch/open-teelaunch-products-api/)
 
-Browse Teelaunch's blank (base) product catalog - list blank categories, list and get individual blanks and their variants, look up per-country shipping cost for a blank variant, and create a product directly from a blank.
+#### Security (2)
 
-- **Human URL:** [https://api.teelaunch.com/documentation](https://api.teelaunch.com/documentation)
-- **Base URL:** `https://api.teelaunch.com/api/v1`
+Authentication, trust centre, and vulnerability disclosure.
 
-### Teelaunch Products API
+- [Teelaunch Authentication](https://apis.io/security/teelaunch/teelaunch-authentication/)
+- [Teelaunch Domain Security](https://apis.io/security/teelaunch/teelaunch-domain-security/)
 
-List and retrieve the products in a Teelaunch account, update a product, and hold or release the orders tied to a product.
+#### Plans and pricing (1)
 
-- **Human URL:** [https://api.teelaunch.com/documentation](https://api.teelaunch.com/documentation)
-- **Base URL:** `https://api.teelaunch.com/api/v1`
+Published plans, tiers and prices.
 
-### Teelaunch Orders API
+- [Teelaunch Plans Pricing](https://apis.io/plans/teelaunch/teelaunch-plans-pricing/)
 
-Submit and manage print-on-demand orders - list and get orders, store a new order, create an order from a variant, and cancel, hold, or release orders to control production.
+#### Rate limits (1)
 
-- **Human URL:** [https://api.teelaunch.com/documentation](https://api.teelaunch.com/documentation)
-- **Base URL:** `https://api.teelaunch.com/api/v1`
+Published request limits.
 
-### Teelaunch Shipping & Tracking API
+- [Teelaunch Rate Limits](https://apis.io/rate-limits/teelaunch/teelaunch-rate-limits/)
 
-Retrieve shipment and tracking information for fulfilled orders - by Teelaunch order ID, by order line-item ID, or by platform order ID - plus per-country shipping cost lookups for blank variants. Teelaunch also posts shipment tracking to a webhook URL configured in Developer Settings.
+#### FinOps (1)
 
-- **Human URL:** [https://api.teelaunch.com/documentation](https://api.teelaunch.com/documentation)
-- **Base URL:** `https://api.teelaunch.com/api/v1`
+What the API costs to run, by operation.
 
-### Teelaunch Platforms & Stores API
+- [Teelaunch Finops](https://apis.io/finops/teelaunch/teelaunch-finops/)
 
-Work with connected sales-channel platforms (Shopify, Etsy, BigCommerce, and others) and their stores - list platforms and stores, list and get platform products, and link, unlink, ignore, or unignore platform products and their variants.
+## Where to find this API
 
-- **Human URL:** [https://api.teelaunch.com/documentation](https://api.teelaunch.com/documentation)
-- **Base URL:** `https://api.teelaunch.com/api/v1`
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/teelaunch)
 - [Website](https://teelaunch.com)
 - [Documentation](https://api.teelaunch.com/documentation)
-- [Authentication](https://support.teelaunch.com/portal/en/kb/articles/api-token)
-- [Plans](plans/teelaunch-plans-pricing.yml)
-- [Rate Limits](rate-limits/teelaunch-rate-limits.yml)
-- [Fin Ops](finops/teelaunch-finops.yml)
+- [Blog](https://blog.teelaunch.com)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 24.2** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 46.8 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 25.0 |
+| Access clarity | 5.3 |
+
+**Agent readiness 22.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/teelaunch/](https://apis.io/providers/teelaunch/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Teelaunch: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/teelaunch/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
